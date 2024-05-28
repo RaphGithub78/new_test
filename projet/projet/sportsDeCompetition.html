@@ -22,6 +22,7 @@
         nav ul {
             list-style-type: none;
             padding: 0;
+            text-align: center;
         }
 
         nav ul li {
@@ -42,13 +43,13 @@
             color: #333;
         }
 
-        .sports-grid, .coaches-grid {
+        .sports-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 1em;
         }
 
-        .sport-item, .coach-item {
+        .sport-item {
             background-color: white;
             padding: 1em;
             border: 1px solid #ddd;
@@ -56,7 +57,7 @@
             text-align: center;
         }
 
-        .sport-item h3, .coach-item h3 {
+        .sport-item h3 {
             margin-top: 0;
         }
 
@@ -70,17 +71,17 @@
             width: 100%;
         }
 
-        button {
+        a.button {
+            display: inline-block;
             background-color: #007bff;
             color: white;
-            border: none;
             padding: 0.5em 1em;
+            text-decoration: none;
             border-radius: 5px;
-            cursor: pointer;
-            margin: 0.5em 0;
+            margin-top: 10px;
         }
 
-        button:hover {
+        a.button:hover {
             background-color: #0056b3;
         }
     </style>
@@ -90,6 +91,7 @@
         <h1>Sports de Compétition - Sportify</h1>
         <nav>
             <ul>
+                <li><a href="index.html">Accueil</a></li>
                 <li><a href="#basketball">Basketball</a></li>
                 <li><a href="#football">Football</a></li>
                 <li><a href="#rugby">Rugby</a></li>
@@ -109,33 +111,33 @@
             <div class="sports-grid">
                 <div class="sport-item" id="basketball">
                     <h3>Basketball</h3>
-                    <p>Découvrez nos coachs spécialisés en basketball.</p>
-                    <a href="sportsDeCompetition_basketball.html">Voir plus</a>
+                    <p>Découvrez nos coachs de basketball.</p>
+                    <a href="sportsDeCompetition_basketball.html" class="button">Voir plus</a>
                 </div>
                 <div class="sport-item" id="football">
                     <h3>Football</h3>
-                    <p>Découvrez nos coachs spécialisés en football.</p>
-                    <a href="sportsDeCompetition_football.html">Voir plus</a>
+                    <p>Découvrez nôtre coach de football.</p>
+                    <a href="sportsDeCompetition_football.html" class="button">Voir plus</a>
                 </div>
                 <div class="sport-item" id="rugby">
                     <h3>Rugby</h3>
-                    <p>Découvrez nos coachs spécialisés en rugby.</p>
-                    <a href="sportsDeCompetition_rugby.html">Voir plus</a>
+                    <p>Découvrez nos coachs de rugby.</p>
+                    <a href="sportsDeCompetition_rugby.html" class="button">Voir plus</a>
                 </div>
                 <div class="sport-item" id="tennis">
                     <h3>Tennis</h3>
-                    <p>Découvrez nos coachs spécialisés en tennis.</p>
-                    <a href="sportsDeCompetition_tennis.html">Voir plus</a>
+                    <p>Découvrez nos coachs de tennis.</p>
+                    <a href="sportsDeCompetition_tennis.html" class="button">Voir plus</a>
                 </div>
                 <div class="sport-item" id="natation">
                     <h3>Natation</h3>
-                    <p>Découvrez nos coachs spécialisés en natation.</p>
-                    <a href="sportsDeCompetition_natation.html">Voir plus</a>
+                    <p>Découvrez nos coachs de natation.</p>
+                    <a href="sportsDeCompetition_natation.html" class="button">Voir plus</a>
                 </div>
                 <div class="sport-item" id="plongeon">
                     <h3>Plongeon</h3>
-                    <p>Découvrez nos coachs spécialisés en plongeon.</p>
-                    <a href="sportsDeCompetition_plongeon.html">Voir plus</a>
+                    <p>Découvrez nos coachs de plongeon.</p>
+                    <a href="sportsDeCompetition_plongeon.html" class="button">Voir plus</a>
                 </div>
             </div>
         </section>

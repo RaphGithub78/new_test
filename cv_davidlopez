@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>CV de David Lopez - Coach de Tennis</title>
+</head>
+<style>
+    body {
+  font-family: 'Arial', sans-serif;
+  background-color: #f8f9fa;
+  margin: 0;
+  padding: 0;
+    }
+
+.container {
+  display: flex;
+  justify-content: space-between;
+  margin: 20px auto;
+  max-width: 900px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+.left-column {
+  flex: 1;
+  max-width: 300px;
+  padding: 20px;
+    }
+
+.left-column img {
+  width: 100%;
+  border-radius: 50%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+.right-column {
+  flex: 2;
+  max-width: 600px;
+  padding: 20px;
+  margin-left: 20px;
+  border-left: 1px solid #ccc;
+    }
+
+.section {
+  margin-bottom: 20px;
+    }
+
+h1, h2 {
+  margin-bottom: 10px;
+  color: #333;
+    }
+
+h2 {
+  font-size: 18px;
+    }
+
+p {
+  margin-bottom: 10px;
+  color: #666;
+    }
+
+hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin: 10px 0;
+    }
+
+label {
+  font-weight: bold;
+    }
+
+input[type="text"],
+input[type="date"],
+input[type="submit"],
+input[type="radio"],
+input[type="checkbox"] {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+    }
+
+input[type="submit"] {
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+    }
+
+input[type="submit"]:hover {
+  background-color: #0056b3;
+    }
+
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 5px;
+    }
+
+input[type="radio"] + label,
+input[type="checkbox"] + label {
+  font-weight: normal;
+  color: #333;
+    }
+</style>
+
+<body>
+  <div class="container">
+    <div class="left-column">
+      <img src="images/cv_davidlopez.jpg" alt="Photo de profil de David Lopez">
+      <h1>David Lopez</h1>
+      <p>Coach de Tennis</p>
+      <hr>
+      <h2>Langues parlées</h2>
+      <p>Français, Espagnol, Anglais</p>
+      <h2>Numéro de téléphone</h2>
+      <p>+33 6 78 90 12 34</p>
+      <h2>Adresse e-mail</h2>
+      <p>davidlopez@gmail.com</p>
+    </div>
+    <div class="right-column">
+      <div class="section">
+        <h2>Objectif professionnel</h2>
+        <p>En tant que coach de tennis expérimenté, mon objectif est de continuer à partager ma passion pour le tennis et à aider les joueurs de tous niveaux à atteindre leur plein potentiel sur le court. Je suis déterminé à fournir un coaching de qualité et à développer des programmes d'entraînement personnalisés pour répondre aux besoins de chaque joueur.</p>
+      </div>
+      <div class="section">
+        <h2>Expérience en tant que coach</h2>
+        <p>Avec plus de 23 ans d'expérience en tant que coach de tennis, j'ai travaillé avec une grande variété de joueurs, des débutants aux professionnels. J'ai une connaissance approfondie des techniques et des stratégies de tennis, ainsi que la capacité à identifier et à corriger les faiblesses des joueurs. J'ai coaché plusieurs joueurs à des titres nationaux et internationaux.</p>
+        <p>J'ai également organisé et dirigé des camps d'entraînement de tennis pour les joueurs de tous âges, où j'ai pu partager mes connaissances et aider les participants à développer leurs compétences techniques et tactiques.</p>
+      </div>
+      <div class="section">
+        <h2>Compétences</h2>
+        <p>Maîtrise des techniques de tennis, excellente connaissance du jeu, capacité à élaborer des programmes d'entraînement efficaces, communication et leadership exceptionnels sur le terrain. Je suis également compétent dans l'utilisation de la technologie pour analyser les performances et améliorer le jeu des joueurs.</p>
+        <p>En outre, je possède des compétences en gestion de groupe, en résolution de conflits et en développement de la confiance des joueurs.</p>
+      </div>
+      <div class="section">
+        <h2>Formation</h2>
+        <p>Master en Entraînement de Tennis - Université de Madrid</p>
+        <p>Certificat de Coaching de Tennis - Fédération Internationale de Tennis</p>
+      </div>
+      <div class="section">
+        <h2>Références</h2>
+        <p>Disponible sur demande</p>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

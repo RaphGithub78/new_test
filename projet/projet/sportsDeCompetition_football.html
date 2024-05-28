@@ -22,6 +22,7 @@
         nav ul {
             list-style-type: none;
             padding: 0;
+            text-align: center;
         }
 
         nav ul li {
@@ -60,6 +61,29 @@
             bottom: 0;
             width: 100%;
         }
+
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .availability {
+            font-weight: bold;
+            color: green;
+        }
+
+        .unavailable {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -68,25 +92,27 @@
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="basketball.html">Basketball</a></li>
-                <li><a href="football.html">Football</a></li>
-                <li><a href="rugby.html">Rugby</a></li>
-                <li><a href="tennis.html">Tennis</a></li>
-                <li><a href="natation.html">Natation</a></li>
-                <li><a href="plongeon.html">Plongeon</a></li>
+                <li><a href="sportsDeCompetition_basketball.html">Basketball</a></li>
+                <li><a href="sportsDeCompetition_football.html">Football</a></li>
+                <li><a href="sportsDeCompetition_rugby.html">Rugby</a></li>
+                <li><a href="sportsDeCompetition_tennis.html">Tennis</a></li>
+                <li><a href="sportsDeCompetition_natation.html">Natation</a></li>
+                <li><a href="sportsDeCompetition_plongeon.html">Plongeon</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <h2>Nos coachs de football</h2>
+        <h2>Nôtre coach de football</h2>
         <div class="coach-item">
-            <h3>Coach John Doe</h3>
-            <p><strong>Bureau :</strong> Bâtiment A, Bureau 123</p>
-            <p><strong>Disponibilité :</strong> Lundi - Vendredi, 9h - 17h</p>
-            <p><strong>CV :</strong> <a href="cv_johndoe.pdf">Télécharger le CV</a></p>
-            <button>Envoyer un message</button>
+            <img src="images/cv_louisforget.jpg" alt="Photo de profil de Louis Forget" width="20%" height="20%">
+            <h3>Coach Louis</h3>
+            <p><strong>Bureau :</strong> Bâtiment A, Bureau 106</p>
+            <p><strong>Disponibilité :</strong> <span class="availability">Disponible</span></p>
+            <p><strong>CV :</strong> <a href="cv_louisforget.html">Consulter son CV</a></p>
+            <a href="#" class="button">Envoyer un message texte</a>
+            <a href="#" class="button">Envoyer un message vocal</a>
+            <a href="#" class="button">Visioconférence</a>
         </div>
-        <!-- Ajoutez d'autres coachs ici -->
     </main>
     <footer>
         <p>&copy; 2024 Sportify. Tous droits réservés.</p>

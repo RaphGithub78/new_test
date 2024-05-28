@@ -60,6 +60,29 @@
             bottom: 0;
             width: 100%;
         }
+
+        .button {
+            display: inline-block;
+            background-color: #007bff;
+            color: white;
+            padding: 0.5em 1em;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        .availability {
+            font-weight: bold;
+            color: green;
+        }
+
+        .unavailable {
+            color: red;
+        }
     </style>
 </head>
 <body>
@@ -78,15 +101,18 @@
         </nav>
     </header>
     <main>
-        <h2>Nos coachs de natation</h2>
+        <h2>Nôtre coach de natation</h2>
         <div class="coach-item">
-            <h3>Coach John Doe</h3>
-            <p><strong>Bureau :</strong> Bâtiment A, Bureau 123</p>
-            <p><strong>Disponibilité :</strong> Lundi - Vendredi, 9h - 17h</p>
-            <p><strong>CV :</strong> <a href="cv_johndoe.pdf">Télécharger le CV</a></p>
-            <button>Envoyer un message</button>
+            <img src="images/cv_antoniajankovic.jpg" alt="Photo de profil de Antonia Jankovic" width="20%" height="20%">
+            <h3>Coach Antonia</h3>
+            <p><strong>Bureau :</strong> Bâtiment B, Bureau 204</p>
+            <p><strong>Disponibilité :</strong> <span class="availability">Disponible</span></p>
+            <p><strong>CV :</strong> <a href="cv_antoniajankovic.html">Consulter le CV</a></p>
+            <a href="#" class="button">Envoyer un message texte</a>
+            <a href="#" class="button">Envoyer un message vocal</a>
+            <a href="#" class="button">Visioconférence</a>
         </div>
-        <!-- Ajoutez d'autres coachs ici -->
+    
     </main>
     <footer>
         <p>&copy; 2024 Sportify. Tous droits réservés.</p>
