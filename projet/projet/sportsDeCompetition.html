@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports de Compétition - Sportify</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            padding: 1em 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 1em;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 2em;
+        }
+
+        h1, h2, h3 {
+            color: #333;
+        }
+
+        .sports-grid, .coaches-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1em;
+        }
+
+        .sport-item, .coach-item {
+            background-color: white;
+            padding: 1em;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            text-align: center;
+        }
+
+        .sport-item h3, .coach-item h3 {
+            margin-top: 0;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 0.5em 1em;
+            border-radius: 5px;
+            cursor: pointer;
+            margin: 0.5em 0;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Sports de Compétition - Sportify</h1>
+        <nav>
+            <ul>
+                <li><a href="#basketball">Basketball</a></li>
+                <li><a href="#football">Football</a></li>
+                <li><a href="#rugby">Rugby</a></li>
+                <li><a href="#tennis">Tennis</a></li>
+                <li><a href="#natation">Natation</a></li>
+                <li><a href="#plongeon">Plongeon</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <section id="intro">
+            <h2>Bienvenue sur la section des sports de compétition</h2>
+            <p>Découvrez nos coachs et spécialistes dans diverses disciplines sportives.</p>
+        </section>
+        <section id="sports">
+            <h2>Nos Sports Compétitifs</h2>
+            <div class="sports-grid">
+                <div class="sport-item" id="basketball">
+                    <h3>Basketball</h3>
+                    <p>Découvrez nos coachs spécialisés en basketball.</p>
+                    <a href="sportsDeCompetition_basketball.html">Voir plus</a>
+                </div>
+                <div class="sport-item" id="football">
+                    <h3>Football</h3>
+                    <p>Découvrez nos coachs spécialisés en football.</p>
+                    <a href="sportsDeCompetition_football.html">Voir plus</a>
+                </div>
+                <div class="sport-item" id="rugby">
+                    <h3>Rugby</h3>
+                    <p>Découvrez nos coachs spécialisés en rugby.</p>
+                    <a href="sportsDeCompetition_rugby.html">Voir plus</a>
+                </div>
+                <div class="sport-item" id="tennis">
+                    <h3>Tennis</h3>
+                    <p>Découvrez nos coachs spécialisés en tennis.</p>
+                    <a href="sportsDeCompetition_tennis.html">Voir plus</a>
+                </div>
+                <div class="sport-item" id="natation">
+                    <h3>Natation</h3>
+                    <p>Découvrez nos coachs spécialisés en natation.</p>
+                    <a href="sportsDeCompetition_natation.html">Voir plus</a>
+                </div>
+                <div class="sport-item" id="plongeon">
+                    <h3>Plongeon</h3>
+                    <p>Découvrez nos coachs spécialisés en plongeon.</p>
+                    <a href="sportsDeCompetition_plongeon.html">Voir plus</a>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Sportify. Tous droits réservés.</p>
+    </footer>
+</body>
+</html>
