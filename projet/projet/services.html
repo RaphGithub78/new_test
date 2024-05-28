@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Salle de sport Omnes - Sportify</title>
+    <title>Nos services - Sportify</title>
     <style>
         /* Reset some basic elements */
         body, h1, h2, h3, p, ul {
@@ -31,10 +31,11 @@
         nav ul {
             list-style: none;
             padding: 0;
+            display: flex;
+            justify-content: center;
         }
 
         nav ul li {
-            display: inline;
             margin: 0 10px;
         }
 
@@ -53,7 +54,7 @@
             margin: 20px auto;
             max-width: 800px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Centrer le contenu */
+            border-radius: 10px; /* Ajout de bordures arrondies */
         }
 
         footer {
@@ -77,18 +78,53 @@
             background-color: #555;
         }
 
-        .centered {
-            text-align: center;
-            margin-bottom: 20px;
+        #calendar {
+            margin-top: 20px;
+        }
+
+        #calendar div {
+            padding: 10px;
+            background: #e2e2e2;
+            margin-bottom: 5px;
+            cursor: pointer;
+        }
+
+        #calendar div:hover {
+            background: #d1d1d1;
+        }
+
+        /* Styles for the service list */
+        main ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        main ul li {
+            background-color: #f9f9f9; /* Couleur de fond de chaque élément de la liste */
+            margin-bottom: 10px; /* Espacement entre chaque élément de la liste */
+            padding: 15px; /* Espacement à l'intérieur de chaque élément de la liste */
+            border-radius: 5px; /* Ajout de bordures arrondies aux éléments de la liste */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Ombre pour chaque élément */
+        }
+
+        main ul li a {
+            text-decoration: none;
+            color: #333;
+            font-weight: bold;
+        }
+
+        main ul li a:hover {
+            color: #007BFF;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Salle de sport Omnes</h1>
+        <h1>Nos services</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
+                <li><a href="sallesDeSportOmnes.html">Salle de sport Omnes</a></li>
                 <li><a href="appointments.html">Rendez-vous</a></li>
                 <li><a href="search.html">Recherche</a></li>
                 <li><a href="account.html">Votre compte</a></li>
@@ -96,14 +132,13 @@
         </nav>
     </header>
     <main>
-        <img src="images/salleomnes.jpg" alt="Salle de sport Omnes" style="width: 100%; max-width: 500px; display: block; margin: 0 auto 20px;">
-        <div class="centered">
-            <h2>Coordonnées de la salle de sport Omnes</h2>
-            <p><strong>Numéro de la salle :</strong> 101</p>
-            <p><strong>Téléphone :</strong> +33 1 23 45 67 89</p>
-            <p><strong>Courriel :</strong> contact@omnesfitness.com</p>
-        </div>
-        <button onclick="location.href='services.html'">Nos services</button>
+        <ul>
+            <li><a href="service_detail.html">Personnels de la salle de sport</a></li>
+            <li><a href="service_detail.html">Horaire de la gym</a></li>
+            <li><a href="service_detail.html">Règles sur l’utilisation des machines</a></li>
+            <li><a href="service_detail.html">Nouveaux clients</a></li>
+            <li><a href="nutrition.html">Alimentation et nutrition</a></li>
+        </ul>
     </main>
     <footer>
         <p>&copy; 2024 Sportify</p>
