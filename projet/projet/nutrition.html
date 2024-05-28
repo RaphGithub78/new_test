@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Salle de sport Omnes - Sportify</title>
+    <title>Alimentation et nutrition - Sportify</title>
     <style>
         /* Reset some basic elements */
         body, h1, h2, h3, p, ul {
@@ -53,7 +53,6 @@
             margin: 20px auto;
             max-width: 800px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            text-align: center; /* Centrer le contenu */
         }
 
         footer {
@@ -77,33 +76,52 @@
             background-color: #555;
         }
 
-        .centered {
-            text-align: center;
+        .nutrition-tips {
+            margin-top: 20px;
+        }
+
+        .nutrition-tips h3 {
+            margin-bottom: 10px;
+        }
+
+        .nutrition-tips img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 10px;
+        }
+
+        .nutrition-tips p {
             margin-bottom: 20px;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>Salle de sport Omnes</h1>
+        <h1>Alimentation et nutrition</h1>
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="appointments.html">Rendez-vous</a></li>
+                <li><a href="sallesDeSportOmnes.html">Salle de sport Omnes</a></li>
+                <li><a href="services.html">Nos services</a></li>
                 <li><a href="search.html">Recherche</a></li>
-                <li><a href="account.html">Votre compte</a></li>
             </ul>
         </nav>
     </header>
     <main>
-        <img src="images/salleomnes.jpg" alt="Salle de sport Omnes" style="width: 100%; max-width: 500px; display: block; margin: 0 auto 20px;">
-        <div class="centered">
-            <h2>Coordonnées de la salle de sport Omnes</h2>
-            <p><strong>Numéro de la salle :</strong> 101</p>
-            <p><strong>Téléphone :</strong> +33 1 23 45 67 89</p>
-            <p><strong>Courriel :</strong> contact@omnesfitness.com</p>
+        <h2>Conseils sur l’alimentation et la nutrition</h2>
+        <div class="nutrition-tips">
+            <h3>Repas équilibré</h3>
+            <img src="images/repas.jpg" alt="Repas équilibré"height="350 " width="350">
+            <p>Un repas équilibré doit inclure des protéines, des glucides, des lipides sains, et des légumes. Assurez-vous de manger des portions appropriées pour votre niveau d'activité.</p>
+            
+            <h3>Hydratation</h3>
+            <img src="images/hydratation.jpg" alt="Hydratation"height="350 " width="350">
+            <p>L'hydratation est essentielle pour des performances optimales. Buvez au moins 2 litres d'eau par jour et plus si vous faites de l'exercice intense.</p>
+            
+            <h3>Compléments alimentaires</h3>
+            <img src="images/supplements.jpg" alt="Compléments alimentaires"height="350 " width="350">
+            <p>Les compléments alimentaires peuvent aider à combler les carences nutritionnelles. Consultez un nutritionniste avant de commencer tout supplément.</p>
         </div>
-        <button onclick="location.href='services.html'">Nos services</button>
     </main>
     <footer>
         <p>&copy; 2024 Sportify</p>
