@@ -4,87 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Football - Sportify</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-            text-align: center;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 1em;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        main {
-            padding: 2em;
-        }
-
-        h1, h2, h3 {
-            color: #333;
-        }
-
-        .coach-item {
-            background-color: white;
-            padding: 1em;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            text-align: center;
-            margin-bottom: 1em;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .button {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 0.5em 1em;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        .availability {
-            font-weight: bold;
-            color: green;
-        }
-
-        .unavailable {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="style_sportsDeCompetition.css">
 </head>
 <body>
     <header>
@@ -102,7 +22,7 @@
         </nav>
     </header>
     <main>
-        <h2>Nôtre coach de football</h2>
+        <h2>Notre coach de football</h2>
         <div class="coach-item">
             <img src="images/cv_louisforget.jpg" alt="Photo de profil de Louis Forget" width="20%" height="20%">
             <h3>Coach Louis</h3>
@@ -113,6 +33,105 @@
             <a href="#" class="button">Envoyer un message vocal</a>
             <a href="#" class="button">Visioconférence</a>
         </div>
+
+        <h2>Nos services de football</h2>
+        <div class="service-item">
+            <h3>Entraînement Personnel</h3>
+            <p>Sessions individuelles avec un focus sur le développement des compétences spécifiques au football, y compris la technique, la vitesse et l'endurance.</p>
+            <div class="service-detail">
+                <h4>Détails du Service</h4>
+                <p>Nos sessions d'entraînement personnel sont conçues pour améliorer les compétences spécifiques des joueurs. Chaque session est personnalisée en fonction des besoins individuels, que ce soit pour travailler sur le dribble, le tir, la défense ou l'endurance.</p>
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Programme sur mesure adapté à vos objectifs personnels</li>
+                    <li>Encadrement par des coachs professionnels</li>
+                    <li>Amélioration rapide des performances individuelles</li>
+                </ul>
+                <h4>Témoignages</h4>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"L'entraînement personnalisé m'a permis d'améliorer mon jeu global en un temps record. Je recommande vivement ce service !" - Kevin M.</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Avec les conseils du coach Louis, j'ai gagné en rapidité et en précision dans mes passes." - Clara S.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <h3>Camps d'Été</h3>
+            <p>Programmes intensifs pendant l'été pour améliorer les compétences, la condition physique et la stratégie de jeu.</p>
+            <div class="service-detail">
+                <h4>Détails du Service</h4>
+                <p>Nos camps d'été sont des programmes intensifs destinés aux joueurs de tous niveaux. Ils offrent une opportunité unique de s'entraîner dans un environnement professionnel et de se préparer pour la saison à venir.</p>
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Encadrement par des coachs expérimentés</li>
+                    <li>Entraînement intensif sur plusieurs semaines</li>
+                    <li>Amélioration globale des compétences et de la condition physique</li>
+                </ul>
+                <h4>Témoignages</h4>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"Le camp d'été de Sportify a transformé mon approche du jeu. Un must pour tout joueur sérieux." - Jean R.</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Une expérience inoubliable qui m'a donné une véritable avance pour la nouvelle saison." - Isabelle B.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <h3>Analyse Vidéo</h3>
+            <p>Utilisation de la vidéo pour analyser et améliorer la technique de jeu.</p>
+            <div class="service-detail">
+                <h4>Détails du Service</h4>
+                <p>L'analyse vidéo est un outil puissant pour identifier et corriger les erreurs techniques. Nos coachs utilisent des logiciels avancés pour analyser chaque mouvement et fournir des retours détaillés.</p>
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Analyse détaillée des performances individuelles</li>
+                    <li>Correction des erreurs techniques avec des exemples visuels</li>
+                    <li>Amélioration de la compréhension tactique</li>
+                </ul>
+                <h4>Témoignages</h4>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"L'analyse vidéo a radicalement amélioré ma compréhension du jeu. Je peux voir où je dois m'améliorer." - Olivier N.</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Grâce à cette technologie, j'ai corrigé mes erreurs rapidement et efficacement." - Manon V.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <h3>Entraînement en Équipe</h3>
+            <p>Sessions pour améliorer la cohésion d'équipe et les stratégies de jeu collectif.</p>
+            <div class="service-detail">
+                <h4>Détails du Service</h4>
+                <p>Nos sessions d'entraînement en équipe sont conçues pour améliorer la cohésion et les performances collectives. Nous travaillons sur les stratégies de jeu, la communication et la coopération entre les joueurs.</p>
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Amélioration de la cohésion et de la communication d'équipe</li>
+                    <li>Développement des stratégies de jeu collectif</li>
+                    <li>Encadrement par des experts en dynamique d'équipe</li>
+                </ul>
+                <h4>Témoignages</h4>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"Nos séances d'entraînement en équipe ont considérablement amélioré notre coordination sur le terrain." - L'équipe des Lions</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Une approche tactique qui nous a permis de jouer de manière plus fluide et stratégique." - L'équipe des Panthers</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <br>
+    <br/>
     </main>
     <footer>
         <p>&copy; 2024 Sportify. Tous droits réservés.</p>

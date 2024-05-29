@@ -4,86 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tennis - Sportify</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-
-        header {
-            background-color: #333;
-            color: white;
-            padding: 1em 0;
-            text-align: center;
-        }
-
-        nav ul {
-            list-style-type: none;
-            padding: 0;
-        }
-
-        nav ul li {
-            display: inline;
-            margin: 0 1em;
-        }
-
-        nav ul li a {
-            color: white;
-            text-decoration: none;
-        }
-
-        main {
-            padding: 2em;
-        }
-
-        h1, h2, h3 {
-            color: #333;
-        }
-
-        .coach-item {
-            background-color: white;
-            padding: 1em;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            text-align: center;
-            margin-bottom: 1em;
-        }
-
-        footer {
-            background-color: #333;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            position: fixed;
-            bottom: 0;
-            width: 100%;
-        }
-
-        .button {
-            display: inline-block;
-            background-color: #007bff;
-            color: white;
-            padding: 0.5em 1em;
-            text-decoration: none;
-            border-radius: 5px;
-            margin-top: 10px;
-        }
-
-        .button:hover {
-            background-color: #0056b3;
-        }
-
-        .availability {
-            font-weight: bold;
-            color: green;
-        }
-
-        .unavailable {
-            color: red;
-        }
-    </style>
+    <link rel="stylesheet" href="style_sportsDeCompetition.css">a
 </head>
 <body>
     <header>
@@ -91,12 +12,12 @@
         <nav>
             <ul>
                 <li><a href="index.html">Accueil</a></li>
-                <li><a href="basketball.html">Basketball</a></li>
-                <li><a href="football.html">Football</a></li>
-                <li><a href="rugby.html">Rugby</a></li>
-                <li><a href="tennis.html">Tennis</a></li>
-                <li><a href="natation.html">Natation</a></li>
-                <li><a href="plongeon.html">Plongeon</a></li>
+                <li><a href="sportsDeCompetition_basketball.html">Basketball</a></li>
+                <li><a href="sportsDeCompetition_football.html">Football</a></li>
+                <li><a href="sportsDeCompetition_rugby.html">Rugby</a></li>
+                <li><a href="sportsDeCompetition_tennis.html">Tennis</a></li>
+                <li><a href="sportsDeCompetition_natation.html">Natation</a></li>
+                <li><a href="sportsDeCompetition_plongeon.html">Plongeon</a></li>
             </ul>
         </nav>
     </header>
@@ -123,9 +44,79 @@
             <a href="#" class="button">Envoyer un message vocal</a>
             <a href="#" class="button">Visioconférence</a>
         </div>
+        <h2>Nos services de tennis</h2>
+        <div class="service-item">
+            <h3>Entraînement Personnel</h3>
+            <p>Sessions individuelles pour améliorer les compétences techniques et tactiques du tennis, y compris le service, le revers et les déplacements sur le court.</p>
+            <div class="service-detail">
+                <h4>Détails du Service</h4>
+                <p>Nos sessions d'entraînement personnel sont personnalisées pour répondre aux besoins spécifiques de chaque joueur. Que ce soit pour perfectionner votre service, votre revers ou votre jeu de jambes, nos coachs sont là pour vous aider à atteindre vos objectifs.</p>
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Programme individualisé pour maximiser votre potentiel</li>
+                    <li>Entraînement avec des coachs hautement qualifiés</li>
+                    <li>Amélioration rapide des compétences techniques et tactiques</li>
+                </ul>
+                <h4>Témoignages</h4>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"Grâce aux séances d'entraînement personnelles, j'ai amélioré mon jeu de jambes et ma précision sur le court." - Sophie B.</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Les conseils du coach Emily m'ont permis d'ajuster ma technique de service et d'obtenir des résultats immédiats." - Nicolas L.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="service-item">
+            <h3>Cours Collectifs</h3>
+            <p>Leçons en groupe pour améliorer les compétences techniques et tactiques tout en favorisant l'interaction sociale.</p>
+            <div class="service-detail">
+                <h4>Détails du Service</h4>
+                <p>Nos cours collectifs offrent une atmosphère dynamique où les joueurs peuvent pratiquer ensemble tout en recevant des conseils individuels. Les sessions couvrent une variété de compétences, y compris les frappes de base, la stratégie de jeu et le travail sur la puissance.</p>
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Entraînement dans un environnement social et motivant</li>
+                    <li>Interaction avec d'autres passionnés de tennis</li>
+                    <li>Apprentissage des stratégies de jeu en situation réelle</li>
+                </ul>
+                <h4>Témoignages</h4>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"Les cours collectifs m'ont permis de rencontrer d'autres joueurs et d'améliorer ma coordination sur le court." - Maxime D.</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Une excellente façon d'apprendre de nouvelles techniques tout en s'amusant avec des amis." - Emma G.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="service-item">
+            <h3>Préparation aux Compétitions</h3>
+            <p>Programmes spécifiques pour préparer les joueurs à des compétitions de différents niveaux.</p>
+            <div class="service-detail">
+                <h4>Détails du Service</h4>
+                <p>Nos programmes de préparation aux compétitions sont conçus pour aider les joueurs à atteindre leur meilleur niveau lors des tournois et compétitions. Nous offrons un entraînement intensif, des conseils stratégiques et un soutien mental pour maximiser les performances en compétition.</p>
+                <h4>Avantages</h4>
+                <ul>
+                    <li>Entraînement intensif pour renforcer la condition physique et la technique</li>
+                    <li>Stratégies tactiques pour performer sous pression</li>
+                    <li>Coaching mental pour gérer le stress et la concentration</li>
+                </ul>
+                <h4>Témoignages</h4>
+                <div class="testimonials">
+                    <div class="testimonial-item">
+                        <p>"Grâce à la préparation aux compétitions, j'ai gagné en confiance et j'ai réalisé de meilleures performances en tournoi." - Lucas M.</p>
+                    </div>
+                    <div class="testimonial-item">
+                        <p>"Le coaching mental m'a aidé à rester concentré et calme dans les moments cruciaux des compétitions." - Clara H.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     <br>
     <br/>
-
     </main>
     <footer>
         <p>&copy; 2024 Sportify. Tous droits réservés.</p>
