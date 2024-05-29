@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Message Vocal - Sportify</title>
+    <link rel="stylesheet" href="style_voice_message.css">
+</head>
+<body>
+    <header>
+        <h1>Envoi de message vocal</h1>
+    </header>
+    <main>
+        <div class="recording-container">
+            <button id="startRecording">Démarrer l'enregistrement</button>
+            <button id="stopRecording" disabled>Arrêter l'enregistrement</button>
+            <div id="recordingStatus" style="display:none;">Enregistrement en cours...</div>
+        </div>
+        <div id="audioPlayBack"></div>
+        <form action="voice_message_handler.php" method="POST" enctype="multipart/form-data">
+            <input type="hidden" name="audio" id="audio">
+            <button type="submit" id="sendAudio" disabled>Envoyer le message vocal</button>
+            <div id="sendingStatus" style="display:none;">Envoi du message vocal...</div>
+        </form>
+    </main>
+    <script src="voice_message_app.js"></script>
+</body>
+</html>
