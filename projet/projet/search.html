@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Recherche</title>
+    <style>
+        /* CSS pour le style du calendrier */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        header h1 {
+            margin: 0;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
+        form {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            padding: 10px 20px;
+            background-color: #333;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #555;
+        }
+
+        
+
+        
+        
+        
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Recherche</h1>
+        <nav>
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="sallesDeSportOmnes.html">Salle de sport Omnes</a></li>
+                <li><a href="rdvsalle.html">Rendez-vous</a></li>
+                <li><a href="services.html">Nos services</a></li>
+                <li><a href="search.html">Recherche</a></li>
+                <li><a href="account.html">Votre compte</a></li>
+            </ul>
+        </nav>
+    </header><br><br>
+    <div>
+        <!-- Explications sur la fonction de recherche -->
+        <p>Utilisez ce menu pour rechercher rapidement des informations dont vous avez besoin sans passer à la page de « Tout Parcourir ». Dans cette option, vous êtes libre de chercher une personne (un coach de natation, par exemple) par son nom, une personne par sa spécialité (rugby, par exemple) ou un établissement ou service (salle de sport, par exemple). En cliquant sur le bouton « Rechercher », la page web affiche les informations pertinentes sur le sujet de votre recherche.</p>
+        <!-- Champ de recherche -->
+        <form action="recherche.php" method="get">
+            <label for="search">Recherche :</label>
+            <input type="text" id="search" name="search" placeholder="Entrez votre recherche...">
+            <input type="submit" value="Rechercher">
+        </form>
+    </div>
+</body>
+</html>
