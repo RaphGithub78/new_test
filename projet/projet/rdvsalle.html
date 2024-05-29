@@ -5,104 +5,99 @@
     <title>Agenda de Réservation</title>
     <style>
         /* CSS pour le style du calendrier */
-body {
-    font-family: Arial, sans-serif;
-    background-color: white;
-    color: #333;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-}
+        body {
+            font-family: Arial, sans-serif;
+            background-color: white;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        body, h1, h2, h3, p, ul {
+            margin: 0;
+            padding: 0;
+        }
 
-body, h1, h2, h3, p, ul {
-    margin: 0;
-    padding: 0;
-}
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+        }
 
-body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f4f4f4;
-    color: #333;
-}
+        header {
+            background: #333;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
 
-header {
-    background: #333;
-    color: #fff;
-    padding: 20px 0;
-    text-align: center;
-}
+        header h1 {
+            margin: 0;
+        }
 
-header h1 {
-    margin: 0;
-}
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+        }
 
-nav ul {
-    list-style: none;
-    padding: 0;
-    display: flex;
-    justify-content: center;
-}
+        nav ul li {
+            margin: 0 10px;
+        }
 
-nav ul li {
-    margin: 0 10px;
-}
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+        }
 
-nav ul li a {
-    color: #fff;
-    text-decoration: none;
-}
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
 
-nav ul li a:hover {
-    text-decoration: underline;
-}
+        .container {
+            width: 85%;
+            margin: 0 auto;
+            text-align: center;
+            padding: 20px;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background: #333;
+            color: #fff;
+            margin-top: 20px;
+        }
 
-.container {
-    width: 80%;
-    margin: 0 auto;
-    text-align: center;
-    padding: 20px;
-}
+        #agenda {
+            display: grid;
+            grid-template-columns: repeat(8, minmax(30px, 10fr)); /* Ajuster la largeur des colonnes */
+            gap: 10px;
+            margin-top: 20px;
+        }
 
-footer {
-    text-align: center;
-    padding: 20px;
-    background: #333;
-    color: #fff;
-    margin-top: 20px;
-}
+        .time-slot {
+            padding: 20px;
+            border: 1px solid #ccc;
+            background-color: #eaeaea;
+            cursor: pointer;
+            user-select: none;
+        }
 
-#agenda {
-    display: grid;
-    grid-template-columns: repeat(7, 1fr); /* Modification ici pour 7 colonnes */
-    gap: 10px;
-    margin-top: 20px;
-}
+        .time-slot.booked {
+            background-color: red;
+            cursor: not-allowed;
+        }
 
-.time-slot {
-    padding: 20px;
-    border: 1px solid #ccc;
-    background-color: #eaeaea;
-    cursor: pointer;
-    user-select: none;
-}
+        .time-slot:hover {
+            background-color: darkgreen;
+        }
 
-.time-slot.booked {
-    background-color: red;
-    cursor: not-allowed;
-}
+        .time-slot.booked:hover {
+            background-color: gray;
+        }
 
-.time-slot:hover {
-    background-color: darkgreen;
-}
-
-.time-slot.booked:hover {
-    background-color: gray;
-}
-
-/* CSS pour le style du menu de navigation */
-
-
+        /* CSS pour le style du menu de navigation */
         
         
     </style>
@@ -179,7 +174,6 @@ footer {
                 const dateFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
                 const weekRangeText = `${startDate.toLocaleDateString(undefined, dateFormatOptions)} - ${endDate.toLocaleDateString(undefined, dateFormatOptions)}`;
                 const weekDiv = document.createElement('div');
-                weekDiv.innerHTML = `<h2>${weekRangeText}</h2>`;
                 agenda.appendChild(weekDiv);
 
                 for (let i = 0; i < 7; i++) {
@@ -198,29 +192,53 @@ footer {
                     renderDayTimeSlots(timeSlotsDiv);
                 }
             }
+            // Fonction pour afficher les créneaux horaires et gérer les réservations
+function renderDayTimeSlots(container) {
+    const timeSlots = [
+        '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
+        '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00',
+        '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00',
+        '18:00 - 19:00', '19:00 - 20:00', '20:00 - 21:00',
+    ];
 
-            function renderDayTimeSlots(container) {
-                const timeSlots = [
-                    '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
-                    '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00',
-                    '15:00 - 16:00', '16:00 - 17:00', '17:00 - 18:00',
-                    '18:00 - 19:00', '19:00 - 20:00', '20:00 - 21:00',
-                ];
-
-                timeSlots.forEach(slot => {
-                    const div = document.createElement('div');
-                    div.className = 'time-slot';
-                    div.textContent = slot;
-                    div.addEventListener('click', function() {
-                        if (!div.classList.contains('booked')) {
-                            const day = container.dataset.day;
-                            alert(`Réservation confirmée pour le créneau ${day}, ${slot}`);
-                            div.classList.add('booked');
-                        }
-                    });
-                    container.appendChild(div);
+    timeSlots.forEach(slot => {
+        const div = document.createElement('div');
+        div.className = 'time-slot';
+        div.textContent = slot;
+        
+        // Vérifie si le créneau horaire est indisponible
+        if (slot === '12:00 - 13:00' || slot === '13:00 - 14:00'|| slot === '20:00 - 21:00') {
+            div.classList.add('unavailable');
+            div.style.backgroundColor = 'red';
+        } else {
+            // Vérifier si le créneau est déjà réservé
+            const day = container.dataset.day;
+            const [startTime, endTime] = slot.split(' - ');
+            checkAppointmentAvailability(day, startTime, endTime)
+                .then(isAvailable => {
+                    if (isAvailable) {
+                        // Créneau disponible, ajouter un gestionnaire d'événements pour réserver
+                        div.addEventListener('click', function() {
+                            saveAppointment(day, startTime, endTime);
+                        });
+                    } else {
+                        // Créneau déjà réservé
+                        div.classList.add('booked');
+                    }
+                })
+                .catch(error => {
+                    console.error(error);
                 });
-            }
+        }
+
+        container.appendChild(div);
+    });
+}
+
+
+
+
+            
             function getWeeksInMonth(month) {
                 const year = new Date().getFullYear(); // Obtient l'année en cours
                 const weeks = [];
@@ -266,6 +284,60 @@ footer {
                 return startDate;
             }
         });
+        function saveAppointment(date, startTime, endTime) {
+    const formData = new FormData();
+    formData.append('date', date);
+    formData.append('start_time', startTime);
+    formData.append('end_time', endTime);
+
+    fetch('save_appointment.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors de l\'enregistrement du rendez-vous');
+        }
+        return response.json();
+    })
+    .then(data => {
+        // Traitement réussi
+        console.log(data);
+    })
+    .catch(error => {
+        // Gestion des erreurs
+        console.error(error);
+    });
+}
+function checkAppointmentAvailability(date, startTime, endTime) {
+    return new Promise((resolve, reject) => {
+        fetch('check_appointment_availability.php', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                date: date,
+                start_time: startTime,
+                end_time: endTime
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur lors de la vérification de la disponibilité du rendez-vous');
+            }
+            return response.json();
+        })
+        .then(data => {
+            resolve(data.available); // Résolvez avec true ou false selon la disponibilité du créneau
+        })
+        .catch(error => {
+            reject(error);
+        });
+    });
+}
+
+
     </script>
     <footer>
         <!-- Votre pied de page ici -->
