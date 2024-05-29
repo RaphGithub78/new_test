@@ -30,10 +30,18 @@ nav ul li a {
 
 main {
     padding: 2em;
+    max-width: 900px; 
+    margin: 0 auto; 
+}
+.coaches-container {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
 }
 
-h1, h2, h3 {
-    color: #333;
+.coach-item {
+    flex: 0 0 calc(50% - 20px); 
+    margin: 10px; 
 }
 
 .coach-item, .service-item {
@@ -50,7 +58,6 @@ footer {
     color: white;
     text-align: center;
     padding: 1em 0;
-    bottom: 0;
     width: 100%;
 }
 
