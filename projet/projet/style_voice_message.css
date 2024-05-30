@@ -3,6 +3,9 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
 }
 
 header {
@@ -14,11 +17,25 @@ header {
 
 main {
     padding: 2em;
+    text-align: center;
+    flex: 1;
 }
 
-.recording-container {
+.recording-container, .audio-playback, .form-container {
+    margin-bottom: 2em;
+}
+
+.recording-container h2, .audio-playback h2 {
+    font-size: 1.5em;
+    color: #007bff;
+}
+
+footer {
+    background-color: #333;
+    color: white;
+    padding: 1em 0;
     text-align: center;
-    margin-bottom: 1em;
+    margin-top: auto;
 }
 
 button {
@@ -34,4 +51,35 @@ button {
 button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
+}
+
+#recordingStatus, #sendingStatus {
+    display: none;
+}
+
+.message {
+    display: inline-block;
+    padding: 1em;
+    border-radius: 5px;
+    margin-top: 1em;
+    font-size: 1.2em;
+}
+
+.message.success {
+    background-color: #4caf50;
+    color: white;
+}
+
+.message.error {
+    background-color: #f44336;
+    color: white;
+}
+
+/* Ajout de styles pour placer le message de succès au-dessus du footer */
+#messageContainer {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 200px; /* Ajustez la valeur en fonction de votre mise en page */
+    z-index: 1;
 }

@@ -7,21 +7,31 @@
 </head>
 <body>
     <header>
-        <h1>Envoi de message vocal</h1>
+        <h1>Bôite d'envoi de message vocal</h1>
     </header>
     <main>
-        <div class="recording-container">
-            <button id="startRecording">Démarrer l'enregistrement</button>
-            <button id="stopRecording" disabled>Arrêter l'enregistrement</button>
+        <section class="recording-container">
+            <h2>Enregistrez votre message vocal</h2>
+            <button id="startRecording" class="button">Démarrer l'enregistrement</button>
+            <button id="stopRecording" class="button" disabled>Arrêter l'enregistrement</button>
             <div id="recordingStatus" style="display:none;">Enregistrement en cours...</div>
-        </div>
-        <div id="audioPlayBack"></div>
-        <form action="voice_message_handler.php" method="POST" enctype="multipart/form-data">
-            <input type="hidden" name="audio" id="audio">
-            <button type="submit" id="sendAudio" disabled>Envoyer le message vocal</button>
-            <div id="sendingStatus" style="display:none;">Envoi du message vocal...</div>
-        </form>
+        </section>
+        <section class="audio-playback">
+            <h2>Écoutez votre message</h2>
+            <div id="audioPlayBack"></div>
+        </section>
+        <section class="form-container">
+            <form action="voice_message_handler.php" method="POST" enctype="multipart/form-data">
+                <input type="hidden" name="audio" id="audio">
+                <button type="submit" id="sendAudio" class="button" disabled>Envoyer le message vocal</button>
+                <div id="sendingStatus" style="display:none;">Envoi du message vocal...</div>
+            </form>
+        </section>
+        <div id="messageContainer"></div>
     </main>
+    <footer>
+        <p>&copy; 2024 Sportify. Tous droits réservés.</p>
+    </footer>
     <script src="voice_message_app.js"></script>
 </body>
 </html>
