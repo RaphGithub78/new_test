@@ -33,8 +33,8 @@ if (isset($_POST['audio'])) {
     ]);
 
     // Retourner un message de succès
-    echo json_encode(["status" => "success", "message" => "Message vocal envoye avec succes"]);
+    echo json_encode(["status" => "success", "message" => "Message vocal envoye avec succes."]);
 } else {
     // Retourner un message d'erreur
-    echo json_encode(["status" => "error", "message" => "Aucune donnee audio reçue"]);
+    echo json_encode(["status" => "error", "message" => "Aucune donnée audio reçue."]);
 }

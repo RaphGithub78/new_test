@@ -9,6 +9,11 @@ const audioInput = document.getElementById('audio');
 const recordingStatus = document.getElementById('recordingStatus');
 const sendingStatus = document.getElementById('sendingStatus');
 
+// Ajout du conteneur pour les messages de succès/erreur
+const messageContainer = document.createElement('div');
+messageContainer.id = 'messageContainer';
+document.body.appendChild(messageContainer);
+
 startRecordingButton.addEventListener('click', async () => {
     recordingStatus.style.display = 'block';
     const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
@@ -46,7 +51,8 @@ stopRecordingButton.addEventListener('click', () => {
     stopRecordingButton.disabled = true;
 });
 
-sendAudioButton.addEventListener('click', () => {
+sendAudioButton.addEventListener('click', (event) => {
+    event.preventDefault();
     sendingStatus.style.display = 'block';
 
     const formData = new FormData();
@@ -56,11 +62,23 @@ sendAudioButton.addEventListener('click', () => {
     requeteAjax.open('POST', 'voice_message_handler.php');
     requeteAjax.onload = function () {
         sendingStatus.style.display = 'none';
-        // Afficher un message indiquant que le message vocal a été envoyé avec succès
+        const response = JSON.parse(this.responseText);
+        displayMessage(response.message, response.status);
     };
     requeteAjax.onerror = function () {
         sendingStatus.style.display = 'none';
-        // Afficher un message d'erreur à l'utilisateur
+        displayMessage('Une erreur s\'est produite lors de l\'envoi du message vocal.', 'error');
     };
     requeteAjax.send(formData);
 });
+
+function displayMessage(message, status) {
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${status}`;
+    messageElement.textContent = message;
+    messageContainer.appendChild(messageElement);
+
+    setTimeout(() => {
+        messageElement.remove();
+    }, 5000);
+}

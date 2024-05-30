@@ -35,3 +35,26 @@ button:disabled {
     background-color: #cccccc;
     cursor: not-allowed;
 }
+
+#messageContainer {
+    text-align: center;
+    margin-top: 1em;
+}
+
+.message {
+    display: inline-block;
+    padding: 1em;
+    border-radius: 5px;
+    margin-top: 1em;
+    font-size: 1.2em;
+}
+
+.message.success {
+    background-color: #4caf50;
+    color: white;
+}
+
+.message.error {
+    background-color: #f44336;
+    color: white;
+}
