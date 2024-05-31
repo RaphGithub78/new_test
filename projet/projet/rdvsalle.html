@@ -50,6 +50,17 @@
             color: #fff;
             text-decoration: none;
         }
+        .confirmation-message {
+            position: fixed;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: darkgreen; /* Vert */
+            color: #FFFFFF; /* Blanc */
+            padding: 10px 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+        }
 
         nav ul li a:hover {
             text-decoration: underline;
@@ -137,63 +148,83 @@
             <select id="selectedWeek" name="selectedWeek">
                 <!-- Options pour les semaines générées dynamiquement -->
             </select>
+            <label for="email">Votre adresse e-mail :</label>
+            <input type="email" id="email" name="email" required>
             <button type="submit">Confirmer</button>
+            
         </form>
         <div id="agenda">
             <!-- JavaScript va remplir cela avec des créneaux horaires -->
         </div>
+        
+        
     </div>
+    
+
 
     <script>
+        function showConfirmationMessage(message, appointmentDate, appointmentTime, clientEmail) {
+    const confirmationDiv = document.createElement('div');
+    confirmationDiv.textContent = message + ' Rendez-vous réservé le ' + appointmentDate + ' à ' + appointmentTime + ' par ' + clientEmail;
+    confirmationDiv.classList.add('confirmation-message');
+    document.body.appendChild(confirmationDiv);
+    // Supprimez le message de confirmation après quelques secondes
+    setTimeout(function() {
+        confirmationDiv.remove();
+    }, 10000); // Supprimez le message après 10 secondes
+
+}
         document.addEventListener('DOMContentLoaded', function() {
-            const weekSelectionForm = document.getElementById('weekSelectionForm');
-            const selectedWeekDropdown = document.getElementById('selectedWeek');
-            const agenda = document.getElementById('agenda');
+    const weekSelectionForm = document.getElementById('weekSelectionForm');
+    const selectedWeekDropdown = document.getElementById('selectedWeek');
+    const agenda = document.getElementById('agenda');
 
-            // Remplir les options de la sélection de semaine en fonction du mois choisi
-            document.getElementById('selectedMonth').addEventListener('change', function() {
-                const selectedMonth = parseInt(this.value);
-                const weeksInMonth = getWeeksInMonth(selectedMonth);
-                populateWeekDropdown(selectedWeekDropdown, weeksInMonth);
-            });
+    // Remplir les options de la sélection de semaine en fonction du mois choisi
+    document.getElementById('selectedMonth').addEventListener('change', function() {
+        const selectedMonth = parseInt(this.value);
+        const weeksInMonth = getWeeksInMonth(selectedMonth);
+        populateWeekDropdown(selectedWeekDropdown, weeksInMonth);
+    });
 
-            weekSelectionForm.addEventListener('submit', function(event) {
-                event.preventDefault();
-                const selectedMonth = parseInt(document.getElementById('selectedMonth').value);
-                const selectedWeek = parseInt(selectedWeekDropdown.value);
-                renderTimeSlots(selectedMonth, selectedWeek);
-            });
+    weekSelectionForm.addEventListener('submit', function(event) {
+        event.preventDefault();
+        const selectedMonth = parseInt(document.getElementById('selectedMonth').value);
+        const selectedWeek = parseInt(selectedWeekDropdown.value);
+        renderTimeSlots(selectedMonth, selectedWeek);
+    });
 
-            function renderTimeSlots(month, week) {
-                agenda.innerHTML = ''; // Réinitialiser l'agenda
+    
 
-                const startDate = getStartDateOfWeekInMonth(month, week);
-                const endDate = new Date(startDate);
-                endDate.setDate(endDate.getDate() + 6); // Ajouter 6 jours pour obtenir la fin de la semaine
+    function renderTimeSlots(month, week) {
+        agenda.innerHTML = ''; // Réinitialiser l'agenda
 
-                const dateFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-                const weekRangeText = `${startDate.toLocaleDateString(undefined, dateFormatOptions)} - ${endDate.toLocaleDateString(undefined, dateFormatOptions)}`;
-                const weekDiv = document.createElement('div');
-                agenda.appendChild(weekDiv);
+        const startDate = getStartDateOfWeekInMonth(month, week);
+        const endDate = new Date(startDate);
+        endDate.setDate(endDate.getDate() + 6); // Ajouter 6 jours pour obtenir la fin de la semaine
 
-                for (let i = 0; i < 7; i++) {
-                    const currentDate = new Date(startDate);
-                    currentDate.setDate(startDate.getDate() + i);
-                    const dayOfWeek = currentDate.toLocaleDateString(undefined, { weekday: 'long' });
-                    const dayDiv = document.createElement('div');
-                    dayDiv.innerHTML = `<h3>${dayOfWeek}, ${currentDate.toLocaleDateString()}</h3>`;
-                    agenda.appendChild(dayDiv);
+        const dateFormatOptions = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        const weekRangeText = `${startDate.toLocaleDateString(undefined, dateFormatOptions)} - ${endDate.toLocaleDateString(undefined, dateFormatOptions)}`;
+        const weekDiv = document.createElement('div');
+        agenda.appendChild(weekDiv);
 
-                    const timeSlotsDiv = document.createElement('div');
-                    timeSlotsDiv.className = 'time-slots';
-                    timeSlotsDiv.dataset.day = currentDate.toISOString().substr(0, 10); // Format YYYY-MM-DD
-                    dayDiv.appendChild(timeSlotsDiv);
+        for (let i = 0; i < 7; i++) {
+            const currentDate = new Date(startDate);
+            currentDate.setDate(startDate.getDate() + i);
+            const dayOfWeek = currentDate.toLocaleDateString(undefined, { weekday: 'long' });
+            const dayDiv = document.createElement('div');
+            dayDiv.innerHTML = `<h3>${dayOfWeek}, ${currentDate.toLocaleDateString()}</h3>`;
+            agenda.appendChild(dayDiv);
 
-                    renderDayTimeSlots(timeSlotsDiv);
-                }
-            }
-            // Fonction pour afficher les créneaux horaires et gérer les réservations
-function renderDayTimeSlots(container) {
+            const timeSlotsDiv = document.createElement('div');
+            timeSlotsDiv.className = 'time-slots';
+            timeSlotsDiv.dataset.day = currentDate.toISOString().substr(0, 10); // Format YYYY-MM-DD
+            dayDiv.appendChild(timeSlotsDiv);
+
+            renderDayTimeSlots(timeSlotsDiv);
+        }
+    }
+
+    function renderDayTimeSlots(container) {
     const timeSlots = [
         '09:00 - 10:00', '10:00 - 11:00', '11:00 - 12:00',
         '12:00 - 13:00', '13:00 - 14:00', '14:00 - 15:00',
@@ -210,6 +241,7 @@ function renderDayTimeSlots(container) {
         if (slot === '12:00 - 13:00' || slot === '13:00 - 14:00'|| slot === '20:00 - 21:00') {
             div.classList.add('unavailable');
             div.style.backgroundColor = 'red';
+            
         } else {
             // Vérifier si le créneau est déjà réservé
             const day = container.dataset.day;
@@ -285,30 +317,35 @@ function renderDayTimeSlots(container) {
             }
         });
         function saveAppointment(date, startTime, endTime) {
-    const formData = new FormData();
-    formData.append('date', date);
-    formData.append('start_time', startTime);
-    formData.append('end_time', endTime);
+        const formData = new FormData();
+        formData.append('date', date);
+        formData.append('start_time', startTime);
+        formData.append('end_time', endTime);
+        formData.append('email', document.getElementById('email').value); // Récupération de l'adresse e-mail
 
-    fetch('save_appointment.php', {
-        method: 'POST',
-        body: formData
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Erreur lors de l\'enregistrement du rendez-vous');
-        }
-        return response.json();
-    })
-    .then(data => {
-        // Traitement réussi
-        console.log(data);
-    })
-    .catch(error => {
-        // Gestion des erreurs
-        console.error(error);
-    });
-}
+        fetch('save_appointment.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erreur lors de l\'enregistrement du rendez-vous');
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Enregistrement réussi, affichez le message de confirmation avec les détails du rendez-vous
+            showConfirmationMessage(data.message, date, startTime + ' - ' + endTime, document.getElementById('email').value);
+            console.log(data);
+        })
+        .catch(error => {
+            // Gestion des erreurs
+            console.error(error);
+        });
+    }
+
+
+
 function checkAppointmentAvailability(date, startTime, endTime) {
     return new Promise((resolve, reject) => {
         fetch('check_appointment_availability.php', {
