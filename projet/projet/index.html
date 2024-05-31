@@ -1,70 +1,244 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sportify</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>Sportify : Consultation Sportive</h1>
-    </header>
-    <nav class="navbar navbar-expand-md">
-        <button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="main-navigation">
-            <ul class="navbar-nav">
-                <li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
-                <li class="nav-item"><a class="nav-link" href="toutparcourir.html">Tout Parcourir</a></li>
-                <li class="nav-item"><a class="nav-link" href="recherche.html">Recherche</a></li>
-                <li class="nav-item"><a class="nav-link" href="rendez-vous.html">Rendez-vous</a></li>
-                <li class="nav-item"><a class="nav-link" href="votrecompte.html">Votre compte</a></li>
-            </ul>
-        </div>
-    </nav>
-    <main class="centered-content">
-        <div class="content">
-            <h2>Bulletin sportif de la semaine</h2>
-            <div id="carrousel">
-                <ul>
-                    <li class="active"><img src="images/nouvelle1.jpg" alt="Nouvelle 1" width="300" height="400"><p>Nouvelle 1: Trophée aventure des Hauts-de-Seine: Collège George Sand 4ème Sport </p></li>
-                    <li><img src="images/nouvelle2.jpg" alt="Nouvelle 2"><p>Nouvelle 2: Exhibition des joueuses olympiques</p></li>
-                    <li><img src="images/nouvelle3.webp" alt="Nouvelle 3"><p>Nouvelle 3: Kings World Cup: Foot2Rue</p></li>
-                </ul>
-            </div>
-            <div class="controls">
-                <span class="prev">Précédent</span>
-                <span class="next">Suivant</span>
-            </div>
-        </div>
-    </main>
-    <footer class="page-footer centered-content" >
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-md-8 col-sm-12">
-                    <h6 class="text-uppercase font-weight-bold">Information additionnelle</h6>
-                    <p>Sportify est la référence sportive chez OMNES. Restez informé des compétitions, des expositions de joueurs olympiques et bien plus encore, le tout sur une seule plateforme. Nous nous engageons à vous fournir les informations les plus précises et à jour pour que vous ne manquiez jamais une seconde d'action.</p>
-                </div>
-                <div class="col-lg-4 col-md-4 col-sm-12">
-                    <h6 class="text-uppercase font-weight-bold">Contact</h6>
-                    <p>
-                        37, quai de Grenelle, 75015 Paris, France <br>
-                        sportify@omneseducation.fr <br>
-                        +33 01 02 03 04 05 <br>
-                        +33 01 03 02 05 04
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div class="footer-copyright text-center">
-            <p>&copy; 2024 Sportify. Tous droits réservés.</p>
-        </div>
-    </footer>
-    <script src="script.js"></script>
-</body>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
+		<title>Carrousel</title>
+	
+		<style type="text/css">
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				
+				
+			}
+	
+			header {
+				background-color: #333;
+				color: white;
+				padding: 1em 0;
+				text-align: center;
+			}
+	
+			nav {
+				background-color: #007bff;
+			}
+	
+			nav ul {
+				list-style-type: none;
+				padding: 0;
+				text-align: center;
+				margin: 0;
+				display: flex;
+				justify-content: center;
+			}
+	
+			nav ul li {
+				display: inline;
+				margin: 0 1em;
+			}
+	
+			nav ul li a {
+				color: white;
+				text-decoration: none;
+			}
+	
+			
+	
+			#carrousel {
+				position: relative;
+				height: 300px;
+				width: 100%;
+				max-width: 700px;
+				margin: auto;
+			}
+	
+			#carrousel ul {
+				list-style-type: none;
+				padding: 0;
+				margin: 0;
+			}
+	
+			#carrousel ul li {
+				position: absolute;
+				top: 0;
+				left: 0;
+				display: none;
+				text-align: center;
+			}
+	
+			#carrousel ul li:first-child {
+				display: block;
+			}
+	
+			#carrousel ul li img {
+				border: 2px solid black;
+				max-width: 100%;
+				max-height: 100%;
+			}
+	
+			#carrousel ul li figcaption {
+				margin-top: 10px;
+				color: solid black;
+				font-size: 16px;
+			}
+	
+			.controls {
+				position: absolute;
+				top: 165%;
+				left: 0;
+				right: 0;
+				text-align: center;
+				z-index: 999;
+			}
+	
+			.controls span {
+				display: inline-block;
+				padding: 10px 20px;
+				background-color: rgba(0, 0, 0, 0.5);
+				color: white;
+				cursor: pointer;
+				margin: 0 10px;
+			}
+	
+			.graduation {
+				position: absolute;
+				top: 154%;
+				left: 50%;
+				transform: translateX(-50%);
+				
+			}
+			.footer-copyright {
+            color: #666;
+            padding: 5px 0; /* Réduit le padding */
+        }
+		.select-container {
+            display: flex;
+            justify-content: center; /* Centre les éléments horizontalement */
+            margin-top: 2em;
+            margin-bottom: 60px; /* Ajout de marge en bas pour éviter que le footer ne chevauche les sélecteurs */
+        }
+
+        
+
+        .page-footer {
+			 /* Fixe le footer */
+            bottom: 0;
+            background-color: #222;
+            color: #ccc;
+            padding: 40px 0 10px; /* Réduit le padding */
+        }
+	
+			.graduation .point {
+				width: 10px;
+				height: 10px;
+				background-color: lightslategray;
+				border-radius: 50%;
+				display: inline-block;
+				margin: 0 5px;
+			}
+	
+			.graduation .active {
+				background-color: black;
+			}
+	
+			footer {
+		background-color: #333;
+		color: white;
+		text-align: center;
+		
+		width: 100%;
+		height: 100%;
+	}
+	
+			h2{
+				text-align:center ;
+			}
+		</style>
+	</head>
+	<body>
+		<header>
+			<h1>Sportify : Consultation Sportive</h1>
+		</header>
+		<nav class="navbar navbar-expand-md">
+			<button class="navbar-toggler navbar-dark" type="button" data-toggle="collapse" data-target="#main-navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-center" id="main-navigation">
+				<ul class="navbar-nav">
+					<li class="nav-item"><a class="nav-link" href="#">Accueil</a></li>
+					<li class="nav-item"><a class="nav-link" href="toutparcourir.html">Tout Parcourir</a></li>
+					<li class="nav-item"><a class="nav-link" href="recherche.html">Recherche</a></li>
+					<li class="nav-item"><a class="nav-link" href="rendez-vous.html">Rendez-vous</a></li>
+					<li class="nav-item"><a class="nav-link" href="votrecompte.html">Votre compte</a></li>
+				</ul>
+			</div>
+		</nav>
+		<h2>Bulletin sportif de la semaine</h2>
+			<div id="carrousel">
+				<ul>
+					<li>
+						<img src="images/france1.jpg" width="700" height="400"/>
+						<figcaption>Description de l'image 1</figcaption>
+					</li>
+					<li>
+						<img src="images/france2.jpg" width="700" height="400"/>
+						<figcaption>Description de l'image 2</figcaption>
+					</li>
+					<li>
+						<img src="images/france3.jpg" width="700" height="400"/>
+						<figcaption>Description de l'image 3</figcaption>
+					</li>
+					<li>
+						<img src="images/france4.jpg" width="700" height="400"/>
+						<figcaption>Description de l'image 4</figcaption>
+					</li>
+					<li>
+						<img src="images/france5.jpg" width="700" height="400"/>
+						<figcaption>Description de l'image 5</figcaption>
+					</li>
+					<li>
+						<img src="images/france6.jpg" width="700" height="400"/>
+						<figcaption>Description de l'image 6</figcaption>
+					</li>
+					<li>
+						<img src="images/france7.jpg" width="700" height="400"/>
+						<figcaption>Description de l'image 7</figcaption>
+					</li> 
+				</ul>
+				<div class="graduation"></div>
+				<div class="controls">
+					<span class="prev">Précédent</span>
+					<span class="next">Suivant</span>
+				</div>
+			</div>
+			<footer class="page-footer">
+				<div class="container">
+					<div class="row">
+						<div class="col-lg-8 col-md-8 col-sm-12">
+							<h6 class="text-uppercase font-weight-bold">Information additionnelle</h6>
+							<p>Sportify est la référence sportive chez OMNES. Restez informé des compétitions, des expositions de joueurs olympiques et bien plus encore, le tout sur une seule plateforme. Nous nous engageons à vous fournir les informations les plus précises et à jour pour que vous ne manquiez jamais une seconde d'action.</p>
+						</div>
+						<div class="col-lg-4 col-md-4 col-sm-12">
+							<h6 class="text-uppercase font-weight-bold">Contact</h6>
+							<p>
+								37, quai de Grenelle, 75015 Paris, France <br>
+								sportify@omneseducation.fr <br>
+								+33 01 02 03 04 05 <br>
+								+33 01 03 02 05 04
+							</p>
+						</div>
+					</div>
+				</div>
+				<div class="footer-copyright text-center">
+					<p>&copy; 2024 Sportify. Tous droits réservés.</p>
+				</div>
+			</footer>
+			<script src="script.js"></script>
+	</body>
+
 </html>

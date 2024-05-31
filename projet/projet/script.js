@@ -1,31 +1,53 @@
 $(document).ready(function(){
-    var $carrousel = $('#carrousel');
-    var $img = $('#carrousel ul li');
-    var indexImg = $img.length - 1;
-    var i = 0;
+    var $carrousel = $('#carrousel'),
+        $img = $('#carrousel ul li'),
+        indexImg = $img.length - 1,
+        i = 0,
+        $currentImg = $img.eq(i);
 
-    $('.next').click(function(){
-        i = (i === indexImg) ? 0 : (i + 1);
-        updateCarrousel();
-    });
-
-    $('.prev').click(function(){
-        i = (i === 0) ? indexImg : (i - 1);
-        updateCarrousel();
-    });
-
-    function updateCarrousel() {
-        $img.removeClass('active');
-        $img.eq(i).addClass('active');
+    var $graduation = $('.graduation');
+    for (var j = 0; j <= indexImg; j++) {
+        $graduation.append('<span class="point"></span>');
     }
 
-    function slideImg(){
-        setInterval(function(){
-            i = (i === indexImg) ? 0 : (i + 1);
-            updateCarrousel();
-        }, 4000);
+    function updateGraduation() {
+        $('.point').removeClass('active');
+        $('.point').eq(i).addClass('active');
     }
 
-    // Appeler slideImg() pour démarrer le carrousel
+    $('.next').click(function(){ 
+        i++; 
+        if (i > indexImg) {
+            i = 0;
+        }
+        updateGraduation();
+        $currentImg.fadeOut(1000);
+        $currentImg = $img.eq(i);
+        $currentImg.fadeIn(1000);
+    });
+
+    $('.prev').click(function(){ 
+        i--;
+        if (i < 0) {
+            i = indexImg;
+        }
+        updateGraduation();
+        $currentImg.fadeOut(1000);
+        $currentImg = $img.eq(i);
+        $currentImg.fadeIn(1000);
+    });
+
+    function slideImg() {
+        i++;
+        if (i > indexImg) {
+            i = 0;
+        }
+        updateGraduation();
+        $currentImg.fadeOut(1000);
+        $currentImg = $img.eq(i);
+        $currentImg.fadeIn(1000);
+        setTimeout(slideImg, 4000); // Défilement automatique
+    }
+
     slideImg();
 });
