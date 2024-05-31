@@ -49,29 +49,13 @@
                 <th>Valeur</th>
             </tr>
             <?php
-            //identifier le nom de base de données 
-            $database = "liste_comptes"; 
+           if(isset($_POST['email'])) {
+            $email = htmlspecialchars($_POST['email']);
+            // Faites quelque chose avec $email
+            
+                
 
-            if ($_SERVER["REQUEST_METHOD"] == "POST") {
-                $password = $_POST['password'];
-                $email = $_POST['email'];
-
-                //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien) 
-                $db_handle = mysqli_connect('localhost', 'root', '' ); 
-                $db_found = mysqli_select_db($db_handle, $database); 
-
-                if($db_found){
-                    $sql = "(SELECT c.prenom, c.nom, c.dossier, c.courriel, c.mot_de_passe 
-                             FROM client AS c 
-                             WHERE c.mot_de_passe='$password' AND c.courriel='$email') 
-                            UNION 
-                            (SELECT a.prenom, a.nom, NULL, a.courriel, a.mot_de_passe 
-                             FROM administrateur AS a 
-                             WHERE a.mot_de_passe='$password' AND a.courriel='$email')";
-
-                    $result = mysqli_query($db_handle, $sql); 
-
-                    while ($data = mysqli_fetch_assoc($result)) { 
+                  
                         echo "<tr>";
                         echo "<td>Nom</td>";
                         echo "<td>" . $data['nom'] . "</td>";
@@ -82,7 +66,7 @@
                         echo "</tr>";
                         echo "<tr>";
                         echo "<td>Email</td>";
-                        echo "<td>" . $data['courriel'] . "</td>";
+                        echo "<td>" . $email . "</td>";
                         echo "</tr>";
                         echo "<tr>";
                         echo "<td>Dossier</td>";
@@ -96,10 +80,13 @@
                         echo "<td>Mot de passe</td>";
                         echo "<td>" . $data['mot_de_passe'] . "</td>";
                         echo "</tr>";
-                    }
-                }
-            }
-           
+
+    
+           }   
+           else{
+            echo "pbbb";
+           }
+    
             ?>
         </table>
     </div>
