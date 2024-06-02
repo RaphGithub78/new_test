@@ -73,7 +73,47 @@ function analyse_connection($con, $password, $email) {
 
     }
 }
-    function ajout_nouveau($con, $password, $email) {
+
+function analyse_recherche($con, $titre) {
+    // Requête pour récupérer le nom et le mot de passe des différents utilisateurs
+    $sql1 = "SELECT prenom, nom, categorie, cv, NULL, NULL  FROM liste_comptes.coach 
+WHERE nom='$titre' OR prenom='$titre' OR categorie='$titre' OR courriel='$titre'";
+
+    $sql2 = "SELECT prenom, nom, courriel, NULL,NULL,NULL FROM liste_comptes.client 
+    WHERE nom='$titre' OR prenom='$titre' OR courriel='$titre'";
+
+
+    $sql3 = "SELECT nom_service, numero_salle, telephone, courriel, NULL, NULL FROM services_etablissement.services 
+    WHERE nom_service='$titre' OR numero_salle='$titre' OR telephone='$titre' OR courriel='$titre')";
+
+    $curseur1 = mysqli_query($con, $sql1);
+    $curseur2 = mysqli_query($con, $sql2);
+    $curseur3 = mysqli_query($con, $sql3);
+
+    // Vérifier les résultats pour chaque type d'utilisateur
+    if ($data = mysqli_fetch_assoc($curseur1)) {
+   
+            return 2; 
+
+    }
+    else if ($data = mysqli_fetch_assoc($curseur2)) {
+
+            return 1; 
+        }
+
+    else if ($data = mysqli_fetch_assoc($curseur3)) {
+
+            return 3; //salle trouvé
+        }
+    else {
+
+        return -1;
+
+    }
+}
+
+
+function ajout_nouveau($con, $password, $email) {
     
         // Requête pour récupérer le nom et le mot de passe des différents utilisateurs
       $sql3= "INSERT INTO `client` (`id`, `nom`, `prenom`, `dossier`, `rendez-vous`, `courriel`, `mot_de_passe`) VALUES
