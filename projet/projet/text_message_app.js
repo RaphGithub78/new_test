@@ -1,11 +1,4 @@
-/**
- * Codons un chat en HTML/CSS/Javascript avec nos amis PHP et MySQL
- */
 
-/**
- * Il nous faut une fonction pour récupérer le JSON des
- * messages et les afficher correctement
- */
 function getMessages(){
     // 1. Elle doit créer une requête AJAX pour se connecter au serveur, et notamment au fichier text_message_handler.php
     const requeteAjax = new XMLHttpRequest();
@@ -33,11 +26,6 @@ function getMessages(){
     // 3. On envoie la requête
     requeteAjax.send();
   }
-  
-  /**
-   * Il nous faut une fonction pour envoyer le nouveau
-   * message au serveur et rafraichir les messages
-   */
   
   function postMessage(event){
     // 1. Elle doit stoper le submit du formulaire
