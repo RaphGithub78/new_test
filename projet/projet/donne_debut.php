@@ -143,7 +143,7 @@ function supprimer_utilisateur_test($con, $titre){
 function ajout_nouveau($con, $password, $email) {
     
         // Requête pour récupérer le nom et le mot de passe des différents utilisateurs
-      $sql3= "INSERT INTO `client` (`id`, `nom`, `prenom`, `dossier`, `rendez-vous`, `courriel`, `mot_de_passe`) VALUES
+      $sql3= "INSERT INTO `client` (`id`, `nom`, `prenom`, `dossier`, `rdv`, `courriel`, `mot_de_passe`) VALUES
 (5, 'NULL', 'NULL', 'reservations', 'rendez vous',  '$email', '$password')";
       if(mysqli_query($con, $sql3)){
         return TRUE;
