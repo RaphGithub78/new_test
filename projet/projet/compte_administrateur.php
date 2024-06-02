@@ -41,6 +41,8 @@
 </head>
 <body>
     <button onclick="window.location.href = 'services.html';">Revenir à l'accueil</button>
+    <button onclick="window.location.href = 'deconnexion.php';">deconnexion</button>
+
     <div class="container">
         <h1>Mon Compte Utilisateur</h1>
         <table>

@@ -41,7 +41,7 @@
 </head>
 <body>
 <button onclick="window.location.href = 'services.html';">Revenir à l'accuiel</button>
-<button onclick="window.location.href = 'deconnexion.php';">Revenir à l'accuiel</button>
+<button onclick="window.location.href = 'deconnexion.php';">deconnexion</button>
 
 <form action="deconnexion.php" method="post">
     <button type="submit">Déconnexion</button>

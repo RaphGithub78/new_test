@@ -17,7 +17,7 @@ $db = new PDO('mysql:host=localhost;dbname=chat;charset=utf8', 'root', '', [
 // Vérifiez si le fichier audio est envoyé
 if (isset($_POST['audio'])) {
     $audio = $_POST['audio'];
-    $author = 'Anonymous'; 
+    $author = 'Anonymous'; // Vous pouvez modifier cela pour capturer le vrai auteur
     $audio = str_replace('data:audio/wav;base64,', '', $audio);
     $audio = str_replace(' ', '+', $audio);
     $audioData = base64_decode($audio);

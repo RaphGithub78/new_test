@@ -1,15 +1,16 @@
 <?php
 
-
- //Connexion simple à la base de données via PDO !
+/**
+ * Connexion simple à la base de données via PDO !
+ */
 $db = new PDO('mysql:host=localhost;dbname=chat;charset=utf8', 'root', '', [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION, 
     PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC
 ]);
 
-
-// On doit analyser la demande faite via l'URL (GET) afin de déterminer si on souhaite récupérer les messages ou en écrire un
-
+/**
+ * On doit analyser la demande faite via l'URL (GET) afin de déterminer si on souhaite récupérer les messages ou en écrire un
+ */
 $task = "list";
 
 if(array_key_exists("task", $_GET)){
@@ -22,9 +23,9 @@ if($task == "write"){
   getMessages();
 }
 
-
- //Si on veut récupérer, il faut envoyer du JSON
- 
+/**
+ * Si on veut récupérer, il faut envoyer du JSON
+ */
 function getMessages(){
   global $db;
 
@@ -35,8 +36,9 @@ function getMessages(){
   // 3. On affiche les données sous forme de JSON
   echo json_encode($messages);
 }
- //Si on veut écrire au contraire, il faut analyser les paramètres envoyés en POST et les sauver dans la base de données
- 
+/**
+ * Si on veut écrire au contraire, il faut analyser les paramètres envoyés en POST et les sauver dans la base de données
+ */
 function postMessage(){
   global $db;
   // 1. Analyser les paramètres passés en POST (author, content)
@@ -62,3 +64,6 @@ function postMessage(){
   // 3. Donner un statut de succes ou d'erreur au format JSON
   echo json_encode(["status" => "success"]);
 }
+/**
+ * Voilà c'est tout en gros.
+ */

@@ -27,11 +27,6 @@ function getMessages(){
     requeteAjax.send();
   }
   
-  /**
-   * Il nous faut une fonction pour envoyer le nouveau
-   * message au serveur et rafraichir les messages
-   */
-  
   function postMessage(event){
     // 1. Elle doit stoper le submit du formulaire
     event.preventDefault();
