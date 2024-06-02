@@ -83,12 +83,9 @@ WHERE nom='$titre' OR prenom='$titre' OR categorie='$titre' OR courriel='$titre'
     WHERE nom='$titre' OR prenom='$titre' OR courriel='$titre'";
 
 
-    $sql3 = "SELECT nom_service, numero_salle, telephone, courriel, NULL, NULL FROM services_etablissement.services 
-    WHERE nom_service='$titre' OR numero_salle='$titre' OR telephone='$titre' OR courriel='$titre')";
 
     $curseur1 = mysqli_query($con, $sql1);
     $curseur2 = mysqli_query($con, $sql2);
-    $curseur3 = mysqli_query($con, $sql3);
 
     // Vérifier les résultats pour chaque type d'utilisateur
     if ($data = mysqli_fetch_assoc($curseur1)) {
@@ -100,17 +97,47 @@ WHERE nom='$titre' OR prenom='$titre' OR categorie='$titre' OR courriel='$titre'
 
             return 1; 
         }
-
-    else if ($data = mysqli_fetch_assoc($curseur3)) {
-
-            return 3; //salle trouvé
-        }
     else {
 
         return -1;
 
     }
 }
+
+function analyse_recherche_data($con, $titre) {
+    // Requête pour récupérer les informations des différents utilisateurs
+    $sql1 = "SELECT prenom, nom, categorie, cv, NULL, NULL  FROM liste_comptes.coach 
+    WHERE nom='$titre' OR prenom='$titre' OR categorie='$titre' OR courriel='$titre'";
+
+$sql2 = "SELECT prenom, nom, courriel, NULL,NULL,NULL FROM liste_comptes.client 
+WHERE nom='$titre' OR prenom='$titre' OR courriel='$titre'";
+
+    $curseur1 = mysqli_query($con, $sql1);
+    $curseur2 = mysqli_query($con, $sql2);
+
+    // Vérifier les résultats pour chaque type d'utilisateur
+    if ($data = mysqli_fetch_assoc($curseur1)) {
+        return $data; 
+    } else if ($data2 = mysqli_fetch_assoc($curseur2)) {
+        return $data2; 
+    } else {
+        return -1; // Aucun utilisateur trouvé
+    }
+}
+
+
+
+function supprimer_utilisateur_test($con, $titre){
+    
+       $sql7=" DELETE FROM coach WHERE prenom = '$titre'";
+   
+    
+    if(mysqli_query($con, $sql7)){
+        return TRUE;
+      }
+}
+
+
 
 
 function ajout_nouveau($con, $password, $email) {
@@ -123,4 +150,15 @@ function ajout_nouveau($con, $password, $email) {
       }
      
 
+    }
+
+
+    function ajout_nouveau_lien_admin($con, $cv) {
+    
+        // Requête pour récupérer le nom et le mot de passe des différents utilisateurs
+      $sql3= "INSERT INTO `coach` (`id`, `nom`, `prenom`, `categorie`, `cv`,`dossier`,`courriel`, `mot_de_passe`) VALUES
+(5, 'NULL', 'NULL', 'reservations', '$cv',  'NULL', 'NULL','NULL')";
+      if(mysqli_query($con, $sql3)){
+        return TRUE;
+      }
     }
