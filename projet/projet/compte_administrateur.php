@@ -42,6 +42,7 @@
 <body>
     <button onclick="window.location.href = 'services.html';">Revenir à l'accueil</button>
     <button onclick="window.location.href = 'deconnexion.php';">deconnexion</button>
+    <button onclick="window.location.href = 'ajout_coach.php';">supprimer le compte</button>
 
     <div class="container">
         <h1>Mon Compte Utilisateur</h1>

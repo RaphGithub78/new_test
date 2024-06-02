@@ -3,12 +3,13 @@
 //suppresion possible d'un client ou d'un coach:
 
 require 'donne_debut.php';
-$con = connexion();
+
 session_start();
 
+$con = connexion();
 if( isset($_SESSION['email'])){
     $email = $_SESSION['email'];
-    $password ='1234';
+   $password ='1234';
     echo "bien connecte";
     //Rappel : votre serveur = localhost | votre login = root | votre mot de pass = '' (rien) 
     
