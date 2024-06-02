@@ -40,7 +40,7 @@
     </style>
 </head>
 <body>
-<button onclick="window.location.href = 'services.html';">Revenir à l'accuiel</button>
+<button onclick="window.location.href = 'index.html';">Revenir à l'accueil</button>
     <div class="container">
         <h1>Mon Compte Utilisateur</h1>
         <table>
