@@ -40,10 +40,10 @@ if (!empty($titre)) {
                 $result=analyse_recherche_data($con, $titre);
                 //$data = mysqli_fetch_assoc($result);
                echo $result['cv'];
-               if(ajout_rendez_vous($con_rdv, $result['prenom'], $result['nom'], $result['categorie'], $result['cv'])==TRUE){
+               ajout_rendez_vous($con_rdv, $result['prenom'], $result['nom'], $result['categorie'], $result['cv']);
                 echo "on est boooooon";
-               };
-            header("Location: voir_plus.php" );
+               
+            header("Location:index.html" );
            // exit; // Assurez-vous de terminer le script après la redirection pour éviter toute exécution supplémentaire
             
             } else {

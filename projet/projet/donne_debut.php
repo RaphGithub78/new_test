@@ -21,6 +21,18 @@ function connexion_rdv() {
 
     return $db_handle2;
 }
+
+function connexion_salles() {
+    $database3 = "sallesdb";
+    $db_handle3 = mysqli_connect('localhost', 'root', '', $database3);
+
+    if (!$db_handle3) {
+        die("Erreur connexion à MySQL DB : " . mysqli_connect_error());
+    }
+
+    return $db_handle3;
+}
+
 function listeniveau($con, $password, $email) {
     $sql = "(SELECT c.prenom, c.nom, c.dossier, c.courriel, c.mot_de_passe
              FROM client AS c
@@ -113,6 +125,27 @@ WHERE nom='$titre' OR prenom='$titre' OR categorie='$titre' OR courriel='$titre'
     }
 }
 
+function analyse_recherche_salles($con_salle, $titre) {
+    // Requête pour récupérer le nom et le mot de passe des différents utilisateurs
+    $sql1 = "SELECT *  FROM salles 
+WHERE lieu='$titre' OR nom='$titre' OR categorie='$titre' OR courriel='$titre' OR numero='$titre'";
+
+
+    $curseur1 = mysqli_query($con_salle, $sql1);
+
+    // Vérifier les résultats pour chaque type d'utilisateur
+    if ($data = mysqli_fetch_assoc($curseur1)) {
+   
+            return $data; 
+
+    }
+   
+    else {
+
+        return -1;
+
+    }
+}
 function analyse_recherche_data($con, $titre) {
     // Requête pour récupérer les informations des différents utilisateurs
     $sql1 = "SELECT prenom, nom, categorie, cv, NULL, NULL  FROM liste_comptes.coach 

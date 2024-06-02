@@ -74,13 +74,14 @@
         require "donne_debut.php";
 
         $con = connexion();
+        $con_salles = connexion_salles();
 
         if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['titre'])) {
             $titre = htmlspecialchars($_GET['titre']); // Sécurisation des données d'entrée
             session_start();
             $_SESSION["titre"] = $titre;  
 
-            if (analyse_recherche($con, $titre) != -1) {
+            if ((analyse_recherche($con, $titre) != -1) || (analyse_recherche_salles($con_salles, $titre) !=-1) ) {
                 $result = analyse_recherche_data($con, $titre);
 
                 if ($result) {
@@ -95,12 +96,13 @@
                         echo "<tr><td>Nom</td><td>" . htmlspecialchars($result['nom']) . "</td></tr>";
                         echo "<tr><td>Prénom</td><td>" . htmlspecialchars($result['prenom']) . "</td></tr>";
                         echo "<tr><td>Email</td><td>" . htmlspecialchars($result['courriel']) . "</td></tr>";
-                    } elseif (analyse_recherche($con, $titre) == 3) {
+                    } elseif (analyse_recherche_salles($con_salles, $titre) !=-1) {
                         // Afficher les données de l'administrateur
+                        $result = analyse_recherche_salles($con_salles, $titre);
                         echo "<tr><td>Nom</td><td>" . htmlspecialchars($result['nom']) . "</td></tr>";
-                        echo "<tr><td>Prénom</td><td>" . htmlspecialchars($result['prenom']) . "</td></tr>";
-                        echo "<tr><td>Disponibilite</td><td>" . htmlspecialchars($result['disponibilite']) . "</td></tr>";
-                        echo "<tr><td>CV</td><td>" . htmlspecialchars($result['cv']) . "</td></tr>";
+                        echo "<tr><td>numero</td><td>" . htmlspecialchars($result['numero']) . "</td></tr>";
+                        echo "<tr><td>courriel</td><td>" . htmlspecialchars($result['courriel']) . "</td></tr>";
+                        echo "<tr><td>categorie</td><td>" . htmlspecialchars($result['categorie']) . "</td></tr>";
                     }
                 } else {
                     // Aucune donnée trouvée

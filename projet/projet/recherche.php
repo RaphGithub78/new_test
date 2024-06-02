@@ -76,14 +76,16 @@
 </head>
 <body>
     <div class="container">
-        <h1>Voici la présentation</h1>
+        <h1>Recherchez ce qu'il vous faut</h1>
 
         <form method="get" action="Resultat_recherche.php">
-            <label for="titre">Titre :</label>
+            <label for="titre">Champ :</label>
             <input type="text" id="titre" name="titre" placeholder="Entrez un nom, prénom, catégorie...">
             <button type="submit">Rechercher</button>
         </form>
         
     </div>
+
+    <button onclick="window.location.href = 'index.html';">Acceuil</button>
 </body>
 </html>
