@@ -43,7 +43,7 @@ if (!empty($titre)) {
                if(ajout_rendez_vous($con_rdv, $result['prenom'], $result['nom'], $result['categorie'], $result['cv'])==TRUE){
                 echo "on est boooooon";
                };
-           // header("Location: " . $result['cv']);
+            header("Location: voir_plus.php" );
            // exit; // Assurez-vous de terminer le script après la redirection pour éviter toute exécution supplémentaire
             
             } else {

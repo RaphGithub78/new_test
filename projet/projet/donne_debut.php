@@ -183,6 +183,17 @@ function ajout_nouveau($con, $password, $email) {
       }
     }
 
+function supprimer_rdv($conn, $nom){
+    
+        $sql7=" DELETE FROM rdvous WHERE nom = '$nom'";
+    
+     
+     if(mysqli_query($conn, $sql7)){
+         return TRUE;
+       }
+ }
+
+
     function afficher_rdv($conn){
         $sql7="SELECT * FROM rdvous";
         $curseur10 = mysqli_query($conn, $sql7);

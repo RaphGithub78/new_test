@@ -23,11 +23,35 @@
             background-color: #f2f2f2;
         }
     </style>
+
+<style>
+    .hidden {
+        display: none;
+    }
+</style>
+
 </head>
+
+<body>
 <h2>Liste des rendez-vous</h2>
 
-<button onclick="window.location.href = 'analyse_cv.php';">analyse_cv</button>
-<body>
+<button onclick="afficherBarre()">supprimer un rendez-vous?</button>
+<button onclick="window.location.href = 'index.html';">revenir a l'acceuil</button>
+<div id="barre" class="hidden">
+    <form id="myForm" action="supprimer_rdv.php" method="post">
+        <textarea id="zoneTexte" name="texte" rows="4" cols="50"></textarea>
+        <br>
+        <input type="submit" value="Envoyer">
+    </form>
+</div>
+<script>
+    function afficherBarre() {
+        var barre = document.getElementById("barre");
+        barre.classList.remove("hidden");
+    }
+</script>
+
+
 
 
 <?php
@@ -42,11 +66,5 @@ echo "<td>" . htmlspecialchars($result['prenom']) . "</td>";
 echo "<td>" . htmlspecialchars($result['date']) . "</td></tr>";
 echo "</table>";
 ?>
-
-
-
-
-
-
 </body>
 </html>

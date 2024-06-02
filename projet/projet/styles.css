@@ -1,0 +1,26 @@
+.taskbar {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    display: none; /* La barre des tâches est cachée par défaut */
+}
+
+.taskbar ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.taskbar ul li {
+    display: inline-block;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.taskbar ul li:hover {
+    text-decoration: underline;
+}
