@@ -7,8 +7,7 @@
 </head>
 <body>
     <button onclick="window.location.href = 'analyse_cv.php';">analyse_cv</button>
-    <button onclick="window.location.href = 'text_message.html';">discuter avec le coach </button>
-    <button onclick="window.location.href = 'prendre_rendez_vous.php';">prendre rendez vous </button>
+    <button onclick="window.location.href = 'text_message_with_client.html';">discuter avec le client </button>
     
 
     <?php

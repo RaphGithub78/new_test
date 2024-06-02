@@ -11,7 +11,16 @@ function connexion() {
 
     return $db_handle;
 }
+function connexion_rdv() {
+    $database2 = "rdv";
+    $db_handle2 = mysqli_connect('localhost', 'root', '', $database2);
 
+    if (!$db_handle2) {
+        die("Erreur connexion à MySQL DB : " . mysqli_connect_error());
+    }
+
+    return $db_handle2;
+}
 function listeniveau($con, $password, $email) {
     $sql = "(SELECT c.prenom, c.nom, c.dossier, c.courriel, c.mot_de_passe
              FROM client AS c
@@ -162,3 +171,22 @@ function ajout_nouveau($con, $password, $email) {
         return TRUE;
       }
     }
+
+
+    function ajout_rendez_vous($con_rdv, $prenom, $nom, $categorie, $cv) {
+    
+        // Requête pour récupérer le nom et le mot de passe des différents utilisateurs
+      $sql3= "INSERT INTO `rdvous` ( `nom`, `prenom`, `categorie`,`date` ) VALUES
+('$nom', '$prenom', '$categorie', '0606')";
+      if(mysqli_query($con_rdv, $sql3)){
+        return TRUE;
+      }
+    }
+
+    function afficher_rdv($conn){
+        $sql7="SELECT * FROM rdvous";
+        $curseur10 = mysqli_query($conn, $sql7);
+        if ($data = mysqli_fetch_assoc($curseur10)) {
+            return $data; 
+    }
+}

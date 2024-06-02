@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Chat avec ton client</title>
+    <link rel="stylesheet" href="style_text_message.css">
+</head>
+<body>
+    <header>
+        <h1>Chat avec ton coach</h1>
+    </header>
+
+    <section class="chat">
+        <div class="messages"></div>
+        <div class="user-inputs">
+            <form action="text_message_handler.php" method="POST">
+                <input type="text" name="author" id="author" placeholder="Pseudonyme" required>
+                <input type="text" id="content" name="content" placeholder="Ecris ton message ici." required>
+                <button type="submit">Envoyer</button>
+            </form>
+        </div>
+    </section>
+
+    <script src="text_message_app.js"></script>
+</body>
+</html>

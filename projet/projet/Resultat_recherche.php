@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="fr">
 <head>
@@ -25,26 +24,9 @@
             text-align: center;
             color: #333;
         }
-        form {
-            display: flex;
-            justify-content: center;
+        .buttons {
+            text-align: center;
             margin-bottom: 20px;
-        }
-        label {
-            margin-right: 10px;
-            font-size: 1.2em;
-            color: #555;
-        }
-        input[type="text"] {
-            width: 250px;
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 1em;
-        }
-        input[type="text"]::placeholder {
-            color: #999;
-            font-style: italic;
         }
         button {
             padding: 10px 20px;
@@ -54,7 +36,7 @@
             color: #fff;
             font-size: 1em;
             cursor: pointer;
-            margin-left: 10px;
+            margin: 5px;
         }
         button:hover {
             background-color: #0056b3;
@@ -73,55 +55,64 @@
             background-color: #f2f2f2;
             font-weight: normal;
         }
+        .no-data {
+            text-align: center;
+            color: #999;
+        }
     </style>
 </head>
 <body>
-<button onclick="window.location.href = 'recherche.php';">Revenir à la recherche</button>
-<button onclick="window.location.href = 'voir_plus.php';">voir plus</button>
-    </body>
 
-<table>
-            <?php
-require "donne_debut.php";
+<div class="container">
+    <div class="buttons">
+        <button onclick="window.location.href = 'recherche.php';">Revenir à la recherche</button>
+        <button onclick="window.location.href = 'voir_plus.php';">Voir plus</button>
+    </div>
 
-$con =connexion();
+    <table>
+        <?php
+        require "donne_debut.php";
 
-            // Identifier le nom de la base de données
-            if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['titre'])) {
-                $titre = htmlspecialchars($_GET['titre']); // Sécurisation des données d'entrée
-                session_start();
-                $_SESSION["titre"]= $titre;  
-                // Si la BDD existe, faire le traitement
-                if (analyse_recherche($con, $titre)!=-1) {
-                    $result = analyse_recherche_data($con, $titre);
-                            if (analyse_recherche($con, $titre)==2) {
+        $con = connexion();
 
-                                // Afficher les données du coach
-                                echo "<tr><td>Nom</td><td>" . $result['nom'] . "</td></tr>";
-                                echo "<tr><td>Prénom</td><td>" . $result['prenom'] . "</td></tr>";
-                                echo "<tr><td>Categorie</td><td>" . $result['categorie'] . "</td></tr>";
-                                echo "<tr><td>CV</td><td>" . $result['cv'] . "</td></tr>";
-                            } elseif (analyse_recherche($con, $titre)==1) {
-                                // Afficher les données du client ou administrateur
-                                echo "<tr><td>Nom</td><td>" . $result['nom'] . "</td></tr>";
-                                echo "<tr><td>Prénom</td><td>" . $result['prenom'] . "</td></tr>";
-                                echo "<tr><td>Email</td><td>" . $result['courriel'] . "</td></tr>";
-                            } elseif (analyse_recherche($con, $titre)==3) {
-                                // Afficher les données de l'administrateur
-                                echo "<tr><td>Nom</td><td>" . $result['nom'] . "</td></tr>";
-                                echo "<tr><td>Prénom</td><td>" . $result['prenom'] . "</td></tr>";
-                                echo "<tr><td>Disponibilite</td><td>" . $result['disponibilite'] . "</td></tr>";
-                                echo "<tr><td>CV</td><td>" . $result['cv'] . "</td></tr>";
-                            }
-                    
-     else {
-                        // Aucune donnée trouvée
-                        echo "<tr><td colspan='2'>Aucune donnée trouvée</td></tr>";
+        if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['titre'])) {
+            $titre = htmlspecialchars($_GET['titre']); // Sécurisation des données d'entrée
+            session_start();
+            $_SESSION["titre"] = $titre;  
+
+            if (analyse_recherche($con, $titre) != -1) {
+                $result = analyse_recherche_data($con, $titre);
+
+                if ($result) {
+                    if (analyse_recherche($con, $titre) == 2) {
+                        // Afficher les données du coach
+                        echo "<tr><td>Nom</td><td>" . htmlspecialchars($result['nom']) . "</td></tr>";
+                        echo "<tr><td>Prénom</td><td>" . htmlspecialchars($result['prenom']) . "</td></tr>";
+                        echo "<tr><td>Categorie</td><td>" . htmlspecialchars($result['categorie']) . "</td></tr>";
+                        echo "<tr><td>CV</td><td>" . htmlspecialchars($result['cv']) . "</td></tr>";
+                    } elseif (analyse_recherche($con, $titre) == 1) {
+                        // Afficher les données du client ou administrateur
+                        echo "<tr><td>Nom</td><td>" . htmlspecialchars($result['nom']) . "</td></tr>";
+                        echo "<tr><td>Prénom</td><td>" . htmlspecialchars($result['prenom']) . "</td></tr>";
+                        echo "<tr><td>Email</td><td>" . htmlspecialchars($result['courriel']) . "</td></tr>";
+                    } elseif (analyse_recherche($con, $titre) == 3) {
+                        // Afficher les données de l'administrateur
+                        echo "<tr><td>Nom</td><td>" . htmlspecialchars($result['nom']) . "</td></tr>";
+                        echo "<tr><td>Prénom</td><td>" . htmlspecialchars($result['prenom']) . "</td></tr>";
+                        echo "<tr><td>Disponibilite</td><td>" . htmlspecialchars($result['disponibilite']) . "</td></tr>";
+                        echo "<tr><td>CV</td><td>" . htmlspecialchars($result['cv']) . "</td></tr>";
                     }
                 } else {
-                    echo "Database not found";
+                    // Aucune donnée trouvée
+                    echo "<tr><td colspan='2' class='no-data'>Aucune donnée trouvée</td></tr>";
                 }
-
+            } else {
+                echo "Database not found";
             }
-            ?>
-        </table>
+        }
+        ?>
+    </table>
+</div>
+
+</body>
+</html>
