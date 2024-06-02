@@ -348,34 +348,41 @@
         });
     }
     function deleteAppointment(date, startTime, endTime, email) {
-        const formData = new FormData();
-        formData.append('date', date);
-        formData.append('start_time', startTime);
-        formData.append('end_time', endTime);
-        formData.append('email', email);
-
-        fetch('delete_appointment.php', {
-            method: 'POST',
-            body: formData
-        })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error('Erreur lors de la suppression du rendez-vous');
-            }
-            return response.json();
-        })
-        .then(data => {
-            if (data.success) {
-                showConfirmationMessage('Rendez-vous supprimé avec succès.', date, startTime + ' - ' + endTime, email);
-                renderTimeSlots(parseInt(document.getElementById('selectedMonth').value), parseInt(selectedWeekDropdown.value));
-            } else {
-                showConfirmationMessage('Erreur: ' + data.message, date, startTime + ' - ' + endTime, email);
-            }
-        })
-        .catch(error => {
-            console.error(error);
-        });
+    if (!email) {
+        alert('Veuillez entrer votre adresse e-mail pour supprimer le rendez-vous.');
+        return;
     }
+
+    const formData = new FormData();
+    formData.append('date', date);
+    formData.append('start_time', startTime);
+    formData.append('end_time', endTime);
+    formData.append('email', email);
+
+    fetch('delete_appointment.php', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Erreur lors de la suppression du rendez-vous');
+        }
+        return response.json();
+    })
+    .then(data => {
+        if (data.success) {
+            showConfirmationMessage('Rendez-vous supprimé avec succès.', date, startTime + ' - ' + endTime, email);
+            renderTimeSlots(parseInt(document.getElementById('selectedMonth').value), parseInt(document.getElementById('selectedWeek').value));
+        } else {
+            showConfirmationMessage('Erreur: ' + data.message, date, startTime + ' - ' + endTime, email);
+        }
+    })
+    .catch(error => {
+        console.error(error);
+    });
+}
+
+    
 
 
 

@@ -1,37 +1,46 @@
 <?php
-header('Content-Type: application/json');
+// delete_appointment.php
 
-$host = 'localhost';
-$db = 'nom_de_votre_base_de_donnees';
-$user = 'nom_utilisateur';
-$pass = 'mot_de_passe';
+// Connectez-vous à la base de données
+$dsn = 'mysql:host=localhost;dbname=agenda_db';
+$username = 'root';
+$password = '';
 
-$mysqli = new mysqli($host, $user, $pass, $db);
-
-if ($mysqli->connect_error) {
-    die(json_encode(['success' => false, 'message' => 'Erreur de connexion à la base de données']));
+try {
+    $pdo = new PDO($dsn, $username, $password);
+    $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+} catch (PDOException $e) {
+    echo json_encode(['success' => false, 'message' => 'Erreur de connexion à la base de données']);
+    exit;
 }
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    $date = $_POST['date'];
-    $start_time = $_POST['start_time'];
-    $end_time = $_POST['end_time'];
-    $email = $_POST['email'];
+// Récupérer les données POST
+$date = $_POST['date'];
+$startTime = $_POST['start_time'];
+$endTime = $_POST['end_time'];
+$email = $_POST['email'];
 
-    $stmt = $mysqli->prepare('DELETE FROM appointments WHERE date = ? AND start_time = ? AND end_time = ? AND email = ?');
-    $stmt->bind_param('ssss', $date, $start_time, $end_time, $email);
-    $stmt->execute();
+if (empty($date) || empty($startTime) || empty($endTime) || empty($email)) {
+    echo json_encode(['success' => false, 'message' => 'Données manquantes']);
+    exit;
+}
 
-    if ($stmt->affected_rows > 0) {
-        echo json_encode(['success' => true]);
+// Supprimer le rendez-vous
+try {
+    $stmt = $pdo->prepare('DELETE FROM appointments WHERE date = :date AND start_time = :start_time AND end_time = :end_time AND email = :email');
+    $stmt->execute([
+        ':date' => $date,
+        ':start_time' => $startTime,
+        ':end_time' => $endTime,
+        ':email' => $email
+    ]);
+
+    if ($stmt->rowCount() > 0) {
+        echo json_encode(['success' => true, 'message' => 'Rendez-vous supprimé avec succès']);
     } else {
-        echo json_encode(['success' => false, 'message' => 'Aucun rendez-vous correspondant trouvé ou vous n\'êtes pas autorisé à le supprimer']);
+        echo json_encode(['success' => false, 'message' => 'Aucun rendez-vous trouvé à cette date et heure pour cet e-mail']);
     }
-
-    $stmt->close();
-} else {
-    echo json_encode(['success' => false, 'message' => 'Méthode non autorisée']);
+} catch (PDOException $e) {
+    echo json_encode(['success' => false, 'message' => 'Erreur lors de la suppression du rendez-vous']);
 }
-
-$mysqli->close();
 ?>
