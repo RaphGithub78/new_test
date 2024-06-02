@@ -83,6 +83,8 @@
         <p>Pas encore inscrit ? <a href="signup.php">S'inscrire</a></p>
     </div>
         <?php 
+require 'donne_debut.php';
+$con = connexion();
 
 
     
@@ -96,31 +98,33 @@
      $db_handle = mysqli_connect('localhost', 'root', '' ); 
      $db_found = mysqli_select_db($db_handle, $database); 
 
-     if($db_found){
-         $sql = "(SELECT c.prenom, c.nom, c.dossier, c.courriel, c.mot_de_passe 
-FROM client AS c 
-WHERE c.mot_de_passe='$password' AND c.courriel='$email') 
-UNION 
-(SELECT a.prenom, a.nom, NULL, a.courriel, a.mot_de_passe 
-FROM administrateur AS a 
-WHERE a.mot_de_passe='$password' AND a.courriel='$email')
-UNION 
-(SELECT co.prenom, co.nom, NULL, co.courriel, co.mot_de_passe 
-FROM coach AS co 
-WHERE co.mot_de_passe='$password' AND co.courriel='$email')";
-
-
-         $result = mysqli_query($db_handle, $sql); 
-         if ($data = mysqli_fetch_assoc($result)){
-           header("Location:compte_onglet.php");
+     if(analyse_connection($con, $password, $email)==1){
+            session_start();
+            $_SESSION['email']=$email;
+           
+            header("Location:compte_client.php");
            exit();     
+
+         }
+         else if(analyse_connection($con, $password, $email)==2){
+            session_start();
+            $_SESSION['email']=$email;
+           
+            header("Location:compte_coach.php");            
+
+         }
+         else if(analyse_connection($con, $password, $email)==3){
+            session_start();
+            $_SESSION['email']=$email;
+           
+            header("Location:compte_administrateur.php");            
 
          }
          else{
              echo("email ou mot de passe non valide, Réessayer");   
 
          }
-        }
+    
     }
 ?>
 </body>
