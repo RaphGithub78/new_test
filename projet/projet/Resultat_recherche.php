@@ -89,33 +89,32 @@ $con =connexion();
             // Identifier le nom de la base de données
             if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['titre'])) {
                 $titre = htmlspecialchars($_GET['titre']); // Sécurisation des données d'entrée
-
+                session_start();
+                $_SESSION["titre"]= $titre;  
                 // Si la BDD existe, faire le traitement
                 if (analyse_recherche($con, $titre)!=-1) {
-                    
-                    if (mysqli_num_rows($result) > 0) {
-                        // Afficher les résultats
-                        while ($data = mysqli_fetch_assoc($result)) {
-                            if (analyse_recherche($con, $titre)==1) {
+                    $result = analyse_recherche_data($con, $titre);
+                            if (analyse_recherche($con, $titre)==2) {
+
                                 // Afficher les données du coach
-                                echo "<tr><td>Nom</td><td>" . $data['nom'] . "</td></tr>";
-                                echo "<tr><td>Prénom</td><td>" . $data['prenom'] . "</td></tr>";
-                                echo "<tr><td>Categorie</td><td>" . $data['categorie'] . "</td></tr>";
-                                echo "<tr><td>CV</td><td>" . $data['cv'] . "</td></tr>";
-                            } elseif (analyse_recherche($con, $titre)==2) {
+                                echo "<tr><td>Nom</td><td>" . $result['nom'] . "</td></tr>";
+                                echo "<tr><td>Prénom</td><td>" . $result['prenom'] . "</td></tr>";
+                                echo "<tr><td>Categorie</td><td>" . $result['categorie'] . "</td></tr>";
+                                echo "<tr><td>CV</td><td>" . $result['cv'] . "</td></tr>";
+                            } elseif (analyse_recherche($con, $titre)==1) {
                                 // Afficher les données du client ou administrateur
-                                echo "<tr><td>Nom</td><td>" . $data['nom'] . "</td></tr>";
-                                echo "<tr><td>Prénom</td><td>" . $data['prenom'] . "</td></tr>";
-                                echo "<tr><td>Email</td><td>" . $data['courriel'] . "</td></tr>";
+                                echo "<tr><td>Nom</td><td>" . $result['nom'] . "</td></tr>";
+                                echo "<tr><td>Prénom</td><td>" . $result['prenom'] . "</td></tr>";
+                                echo "<tr><td>Email</td><td>" . $result['courriel'] . "</td></tr>";
                             } elseif (analyse_recherche($con, $titre)==3) {
                                 // Afficher les données de l'administrateur
-                                echo "<tr><td>Nom</td><td>" . $data['nom'] . "</td></tr>";
-                                echo "<tr><td>Prénom</td><td>" . $data['prenom'] . "</td></tr>";
-                                echo "<tr><td>Disponibilite</td><td>" . $data['disponibilite'] . "</td></tr>";
-                                echo "<tr><td>CV</td><td>" . $data['cv'] . "</td></tr>";
+                                echo "<tr><td>Nom</td><td>" . $result['nom'] . "</td></tr>";
+                                echo "<tr><td>Prénom</td><td>" . $result['prenom'] . "</td></tr>";
+                                echo "<tr><td>Disponibilite</td><td>" . $result['disponibilite'] . "</td></tr>";
+                                echo "<tr><td>CV</td><td>" . $result['cv'] . "</td></tr>";
                             }
-                        }
-                    } else {
+                    
+     else {
                         // Aucune donnée trouvée
                         echo "<tr><td colspan='2'>Aucune donnée trouvée</td></tr>";
                     }
@@ -123,8 +122,6 @@ $con =connexion();
                     echo "Database not found";
                 }
 
-                // Fermer la connexion
-                mysqli_close($db_handle);
             }
             ?>
         </table>

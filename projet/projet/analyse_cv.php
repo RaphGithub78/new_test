@@ -1,36 +1,61 @@
-<?php
 
-require "donne_debut.php"; // Assurez-vous que ce fichier contient la fonction 'connexion' et d'autres configurations nécessaires.
-$con = connexion(); // Établir la connexion à la base de données
+
+<?php
+// Assurez-vous que session_start() est appelé avant toute sortie
+session_start();
+
+// Inclure le fichier de configuration ou de fonctions
+require "donne_debut.php";
 
 // Vérifiez si la connexion a été établie avec succès
+$con = connexion();
 if (!$con) {
     die("Connexion échouée: " . mysqli_connect_error());
 }
 
-// Assurez-vous que l'email est défini et échappez-le pour éviter les injections SQL
-    $sql = "SELECT nom, prenom, categorie, cv, courriel FROM coach ";
+// Vérifiez si la variable de session 'titre' est définie
+if (isset($_SESSION["titre"])) {
+    $titre = $_SESSION["titre"];
+} else {
+    $titre = ''; // Définir une valeur par défaut si 'titre' n'est pas défini
+}
+
+echo "<td>" . htmlspecialchars($titre) . "</td>";
+
+// Assurez-vous que la variable $titre est définie et échappée pour éviter les injections SQL
+if (!empty($titre)) {
+    // Votre requête SQL ici
+    $sql = "SELECT nom, prenom, categorie, cv, courriel FROM coach";
     $result = mysqli_query($con, $sql);
 
     // Vérifiez si la requête a été exécutée avec succès
     if ($result) {
         // Vérifiez si des données ont été renvoyées
         if (mysqli_num_rows($result) > 0) {
-            $data = mysqli_fetch_assoc($result);
-            echo $data['cv'];
-            $dat ="cv_louisforget.html";
-            header("Location: " . $data['cv']);
-            exit; // Assurez-vous de terminer le script après la redirection pour éviter toute exécution supplémentaire
+            // Appelez votre fonction analyse_recherche ici
+            if (analyse_recherche($con, $titre) == 2) {
+                echo "yeahh";   
+                $result=analyse_recherche_data($con, $titre);
+                //$data = mysqli_fetch_assoc($result);
+               echo $result['cv'];
+            //$dat ="cv_louisforget.html";
+            header("Location: " . $result['cv']);
+           // exit; // Assurez-vous de terminer le script après la redirection pour éviter toute exécution supplémentaire
             
-
+            } else {
+                // header("Location:voir_plus.php");
+                echo "nonon";
+            }
         } else {
-            echo "Aucun résultat trouvé pour l'email spécifié.";
+            echo "Aucun résultat trouvé pour le titre spécifié.";
         }
     } else {
         echo "Erreur de requête: " . mysqli_error($con);
     }
+} else {
+    echo "Le titre n'est pas défini.";
+}
 
 // Fermez la connexion à la base de données
 mysqli_close($con);
-
 ?>

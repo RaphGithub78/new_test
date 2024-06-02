@@ -8,6 +8,7 @@
 <body>
     <button onclick="window.location.href = 'analyse_cv.php';">analyse_cv</button>
     <button onclick="window.location.href = 'suppression_compte.php';">supprimer le compte</button>
+    
 
     <?php
     // Votre code PHP ici
